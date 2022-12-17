@@ -1,0 +1,14 @@
+mutation login($username: String!, $password: String!) {
+    authLogin(username: $username, password: $password) {
+        accessToken
+        refreshToken
+        user {
+            id
+            username
+            firstname
+            lastname
+            email
+            isVerified
+        }
+    }
+}

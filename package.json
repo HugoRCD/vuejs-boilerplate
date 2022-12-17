@@ -1,0 +1,38 @@
+{
+  "name": "vuejs-frontend-template",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\""
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.2",
+    "@vue/apollo-option": "^4.0.0-alpha.20",
+    "express": "^4.18.2",
+    "flowbite": "^1.5.5",
+    "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6",
+    "serve-static": "^1.15.0",
+    "vue": "^3.2.13",
+    "vue-i18n": "^9.2.2",
+    "vue-router": "^4.0.3",
+    "vue-sweetalert2": "^5.0.5",
+    "vuex": "^4.0.0"
+  },
+  "devDependencies": {
+    "@intlify/vue-i18n-loader": "^4.2.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "autoprefixer": "^10.4.13",
+    "eslint": "^8.29.0",
+    "eslint-plugin-vue": "^9.8.0",
+    "postcss": "^8.4.20",
+    "sass": "^1.56.2",
+    "sass-loader": "^13.2.0",
+    "tailwindcss": "^3.2.4",
+    "vue-cli-plugin-i18n": "~2.3.1"
+  }
+}

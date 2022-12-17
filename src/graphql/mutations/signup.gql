@@ -1,0 +1,14 @@
+mutation createUser($user: CreateUserInput!) {
+    authSignup(user: $user) {
+        accessToken
+        refreshToken
+        user {
+            id
+            email
+            username
+            firstname
+            lastname
+            isVerified
+        }
+    }
+}

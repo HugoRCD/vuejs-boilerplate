@@ -1,0 +1,11 @@
+mutation verifyUser($code: String!) {
+    verifyUser(code: $code) {
+        id
+        email
+        username
+        firstname
+        lastname
+        isVerified
+        role
+    }
+}
