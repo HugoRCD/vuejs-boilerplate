@@ -24,18 +24,6 @@
         <p>{{ $t("email") }}:</p>
         <input class="custom-input" type="text" v-model="user.email">
       </div>
-      <div class="profile-content-item flex-row">
-        <p>{{ $t("phone") }}:</p>
-        <input class="custom-input" type="text" v-model="user.phone">
-      </div>
-      <div class="profile-content-item flex-row">
-        <p>{{ $t("birthdate") }}:</p>
-        <input class="custom-input" type="date" v-model="user.birthdate">
-      </div>
-      <div class="profile-content-item flex-row">
-        <p>{{ $t("role") }}:</p>
-        <p>{{ $t(role) }}</p>
-      </div>
     </div>
   </div>
 </template>
@@ -51,28 +39,38 @@ export default {
         firstname: "",
         lastname: "",
         email: "",
-        phone: "",
-        birthdate: "",
-        role: null,
       },
       password: "",
       editMode: false,
     };
   },
-  computed: {
-    role() {
-      if (this.user.role === 1) {
-        return "admin";
-      } else if (this.user.role === 0) {
-        return "user";
-      } else {
-        return "user";
-      }
-    }
-  },
   created() {
+    this.user = this.getUser();
   },
   methods: {
+    async getUser() {
+      this.$store.dispatch("loading", true);
+      this.$http.get("/user").then((response) => {
+        this.user = response.data;
+      }).then(() => {
+        this.$store.dispatch("loading", false);
+        this.editMode = false;
+      }).catch((error) => {
+        this.$store.dispatch("loading", false);
+        console.log(error);
+      });
+    },
+    async logout() {
+      this.$store.dispatch("loading", true);
+      this.$http.post("/auth/logout", {}, {withCredentials: true}).then(() => {
+        this.$store.dispatch("loading", false);
+        this.$store.dispatch("logout");
+        this.$router.push({name: "Login"});
+      }).catch((error) => {
+        this.$store.dispatch("loading", false);
+        console.log(error);
+      });
+    },
   }
 };
 </script>

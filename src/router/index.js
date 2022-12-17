@@ -14,7 +14,6 @@ import Account from "@/views/Account/Account.vue";
 import Profile from "@/views/Account/Profile.vue";
 import Settings from "@/views/Account/Settings.vue";
 
-import store from "@/store";
 import VerifyUser from "@/views/Auth/VerifyUser.vue";
 
 const routes = [
@@ -104,38 +103,9 @@ const router = createRouter({
   routes
 });
 
-function isTokenExpired(token) {
-  const base64Url = token.split(".")[1];
-  const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-  const jsonPayload = decodeURIComponent(
-    atob(base64)
-      .split("")
-      .map(function (c) {
-        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-      })
-      .join("")
-  );
-  const {exp} = JSON.parse(jsonPayload);
-  return Date.now() >= exp * 1000;
-}
-
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      next({
-        name: "Login",
-        query: {redirect: to.fullPath}
-      });
-    } else if (isTokenExpired(token)) {
-      store.dispatch("auth/logout");
-      next({
-        name: "Login",
-        query: {redirect: to.fullPath}
-      });
-    } else {
-      next();
-    }
+    next();
   } else {
     next();
   }

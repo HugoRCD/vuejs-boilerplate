@@ -5,24 +5,24 @@
         <h1 class="title">{{ $t("login") }}</h1>
         <p class="text">{{ $t("loginText") }}</p>
       </div>
-      <div class="login-form" v-if="!loading">
+      <form class="login-form" v-if="!loading" @submit.prevent="login">
         <div class="form-item">
-          <label class="label" for="email">{{ $t("email") }}</label>
-          <input class="input" type="email" id="email" placeholder="contact@gmail.com" v-model="user.email"/>
+          <label class="label" for="login">{{ $t("login") }}</label>
+          <input class="input" type="text" id="login" placeholder="contact@gmail.com" v-model="user.login"/>
         </div>
         <div class="form-item">
           <label class="label" for="password">{{ $t("password") }}</label>
           <input class="input" type="password" id="password" placeholder="123soleil" v-model="user.password"/>
         </div>
         <div class="form-item my-lg">
-          <button class="btn-primary fullwidth" @click.prevent="login()">{{ $t("login") }}</button>
+          <button class="btn-primary fullwidth" type="submit">{{ $t("login") }}</button>
         </div>
         <div class="login-footer">
           <p class="text">{{ $t("noAccount") }}
             <router-link :to="{name: 'Signup'}">{{ $t("signup") }}</router-link>
           </p>
         </div>
-      </div>
+      </form>
       <Loader :isText="false" v-else/>
     </div>
   </div>
@@ -37,17 +37,9 @@ export default {
   data() {
     return {
       user: {
-        email: null,
+        login: null,
         password: null
       },
-      toast_success: {
-        title: this.$t("loginSuccess"),
-        icon: "success",
-      },
-      toast_error: {
-        title: this.$t("loginError"),
-        icon: "error",
-      }
     };
   },
   computed: {
@@ -56,6 +48,19 @@ export default {
     }
   },
   methods: {
+    login() {
+      this.$store.dispatch("loading", true);
+      this.$http.post("/auth/login", this.user, {withCredentials: true})
+        .then((response) => {
+          this.$http.defaults.headers.common["Authorization"] = "Bearer " + response.data.accessToken;
+          this.$store.dispatch("login", response.data);
+          this.$store.dispatch("loading", false);
+          this.$router.push({name: "Profile"});
+        })
+        .catch(() => {
+          this.$store.dispatch("loading", false);
+        });
+    }
   }
 };
 </script>

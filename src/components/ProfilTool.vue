@@ -69,31 +69,17 @@ export default {
     toggleProfil() {
       this.menuOpen = !this.menuOpen;
     },
-    logout() {
-      this.$swal({
-        title: this.$t("logout"),
-        text: this.$t("logoutMessage"),
-        icon: "warning",
-        position: "middle",
-        toast: false,
-        showConfirmButton: true,
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: this.$t("yes"),
-        cancelButtonText: this.$t("no")
-      }).then(result => {
-        if (result.isConfirmed) {
-          this.$store.dispatch("logout");
-          this.$router.push({name: "Login"});
-          this.$swal({
-            text: this.$t("logoutSuccess"),
-            icon: "success",
-          });
-          this.menuOpen = false;
-        }
+    async logout() {
+      this.$store.dispatch("loading", true);
+      this.$http.post("/auth/logout", {}, {withCredentials: true}).then(() => {
+        this.$store.dispatch("loading", false);
+        this.$store.dispatch("logout");
+        this.$router.push({name: "Login"});
+      }).catch((error) => {
+        this.$store.dispatch("loading", false);
+        console.log(error);
       });
-    }
+    },
   }
 };
 </script>

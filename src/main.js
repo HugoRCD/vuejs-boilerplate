@@ -6,6 +6,7 @@ import i18n from "./plugins/i18n";
 import VueSweetalert2 from "vue-sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 import "./assets/style/main.scss";
+import axios from "./plugins/axios";
 
 import clickOutside from "./plugins/directives.js";
 
@@ -18,11 +19,12 @@ const options = {
   confirmButtonColor: "var(--accent)",
 };
 
-createApp(App)
-  .use(i18n)
-  .use(store)
-  .use(router)
-  .use(i18n)
-  .use(VueSweetalert2, options)
-  .directive("click-outside", clickOutside["click-outside"])
-  .mount("#app");
+
+const app = createApp(App);
+app.use(store);
+app.use(router);
+app.use(i18n);
+app.use(VueSweetalert2, options);
+app.config.globalProperties.$http = axios;
+app.directive("click-outside", clickOutside["click-outside"]);
+app.mount("#app");
