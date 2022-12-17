@@ -1,5 +1,0 @@
-mutation getVerificationCode($email: String!) {
-    getVerificationCode(email: $email) {
-        code
-    }
-}

@@ -32,7 +32,6 @@
 </template>
 
 <script>
-import createTicket from "@/graphql/mutations/createTicket.gql";
 import Loader from "@/components/Loader.vue";
 
 export default {
@@ -58,37 +57,6 @@ export default {
     },
     hide() {
       this.showSupportDropdown = false;
-    },
-    async sendTicket() {
-      this.$store.dispatch("loading", true);
-      if (this.createTicketInput.description === "") {
-        this.$store.dispatch("loading", false);
-        this.$swal({
-          title: this.$t("messageRequired"),
-          icon: "error",
-        });
-        return;
-      }
-      this.$apollo.mutate({
-        mutation: createTicket,
-        variables: {
-          ticket: this.createTicketInput
-        }
-      }).then(() => {
-        this.$store.dispatch("loading", false);
-        this.$swal({
-          title: this.$t("supportSuccess"),
-          icon: "success",
-        });
-        this.showSupportDropdown = false;
-      }).catch(() => {
-        this.$store.dispatch("loading", false);
-        this.$swal({
-          title: this.$t("supportError"),
-          icon: "error",
-        });
-        this.showSupportDropdown = false;
-      });
     },
   }
 };

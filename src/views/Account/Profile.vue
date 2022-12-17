@@ -41,9 +41,6 @@
 </template>
 
 <script>
-import getUserById from "@/graphql/queries/getUserById.gql";
-import updateUser from "@/graphql/mutations/updateUser.gql";
-import deleteUser from "@/graphql/mutations/deleteUser.gql";
 
 export default {
   name: "Profile",
@@ -74,141 +71,8 @@ export default {
     }
   },
   created() {
-    this.getUser();
   },
   methods: {
-    updateUser() {
-      this.$store.dispatch("loading", true);
-      this.$swal.fire({
-        title: this.$t("editTextConfirm"),
-        html: `<input id="swal-input1" class="swal2-input" type="password" placeholder="${this.$t("password")}">`,
-        icon: "warning",
-        timer: false,
-        position: "center",
-        toast: false,
-        showCancelButton: true,
-        showConfirmButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: this.$t("yes"),
-        cancelButtonText: this.$t("no"),
-      }).then((result) => {
-        if (result.value) {
-          this.$apollo
-            .mutate({
-              mutation: updateUser,
-              variables: {
-                user: {
-                  id: this.user.id,
-                  username: this.user.username,
-                  firstname: this.user.firstname,
-                  lastname: this.user.lastname,
-                  email: this.user.email,
-                  phone: this.user.phone,
-                  birthdate: this.user.birthdate,
-                  password: document.getElementById("swal-input1").value,
-                },
-                id: this.$store.state.user.id,
-              },
-            })
-            .then((res) => {
-              this.$store.dispatch("loading", false);
-              this.$swal.fire({
-                title: this.$t("editSuccess"),
-                icon: "success",
-              });
-            })
-            .catch((err) => {
-              this.$store.dispatch("loading", false);
-              this.$swal.fire({
-                title: this.$t("editError"),
-                icon: "error",
-              });
-            });
-        } else {
-          this.$store.dispatch("loading", false);
-        }
-      });
-    },
-    getUser() {
-      this.$apollo.query({
-        query: getUserById,
-        variables: {
-          id: this.$store.state.user.id
-        }
-      }).then(({data}) => {
-        const findUser = data.getUserById;
-        this.user = {
-          username: findUser.username,
-          firstname: findUser.firstname,
-          lastname: findUser.lastname,
-          email: findUser.email,
-          phone: findUser.phone,
-          birthdate: findUser.birthdate,
-          role: findUser.role
-        };
-      }).catch(error => {
-        console.log(error);
-      });
-    },
-    logout() {
-      this.$swal({
-        title: this.$t("logout"),
-        text: this.$t("logoutMessage"),
-        icon: "warning",
-        position: "middle",
-        toast: false,
-        showConfirmButton: true,
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: this.$t("yes"),
-        cancelButtonText: this.$t("no")
-      }).then(result => {
-        if (result.isConfirmed) {
-          this.$store.dispatch("logout");
-          this.$router.push({name: "Login"});
-          this.$swal({
-            text: this.$t("logoutSuccess"),
-            icon: "success",
-          });
-          this.menuOpen = false;
-        }
-      });
-    },
-    deleteUser() {
-      this.$swal({
-        title: this.$t("deleteAccount"),
-        text: this.$t("deleteAccountText"),
-        icon: "warning",
-        position: "middle",
-        toast: false,
-        showConfirmButton: true,
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: this.$t("yes"),
-        cancelButtonText: this.$t("no"),
-        timer: false
-      }).then(result => {
-        if (result.value) {
-          this.$apollo
-            .mutate({
-              mutation: deleteUser,
-              variables: {
-                id: this.user.id
-              }
-            })
-            .then(({data}) => {
-              this.$store.dispatch("logout");
-              this.$router.push({name: "Home"});
-            })
-            .catch(error => {
-              console.log(error);
-            });
-        }
-      });
-    }
   }
 };
 </script>

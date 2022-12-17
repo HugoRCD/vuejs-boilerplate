@@ -24,8 +24,6 @@
 </template>
 
 <script>
-import verifyUser from "@/graphql/mutations/verifyUser.gql";
-import getVerificationCode from "@/graphql/mutations/getVerificationCode.gql";
 import Loader from "@/components/Loader.vue";
 
 export default {
@@ -42,57 +40,6 @@ export default {
     },
   },
   methods: {
-    verify() {
-      this.$store.dispatch("loading", true);
-      this.$apollo.mutate({
-        mutation: verifyUser,
-        variables: {
-          code: this.code,
-        },
-      })
-        .then((res) => {
-          if (res.data.verifyUser) {
-            this.$store.dispatch("loading", false);
-            this.$store.dispatch("insertUser", res.data.verifyUser);
-            this.$router.push({name: "Home"});
-            this.$swal({
-              title: this.$t("verifyEmailSuccess"),
-              icon: "success",
-            });
-          } else {
-            this.$store.dispatch("loading", false);
-            this.$swal({
-              title: this.$t("verifyEmailError"),
-              icon: "error",
-            });
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          this.$store.dispatch("loading", false);
-        });
-    },
-    getVerificationCode() {
-      const user = this.$store.getters.user;
-      this.$apollo.mutate({
-        mutation: getVerificationCode,
-        variables: {
-          email: user.email,
-        },
-      })
-        .then(() => {
-          this.$swal({
-            title: this.$t("CodeSent"),
-            icon: "success",
-          });
-        })
-        .catch(() => {
-          this.$swal({
-            title: this.$t("CodeSentError"),
-            icon: "error",
-          });
-        });
-    },
   },
 };
 </script>

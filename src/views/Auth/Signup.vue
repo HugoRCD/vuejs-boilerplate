@@ -56,7 +56,6 @@
 </template>
 
 <script>
-import signup from "@/graphql/mutations/signup.gql";
 import Loader from "@/components/Loader.vue";
 
 export default {
@@ -89,28 +88,6 @@ export default {
     },
   },
   methods: {
-    async signup() {
-      this.$store.dispatch("loading", true);
-      this.$apollo.mutate({
-        mutation: signup,
-        variables: {
-          user: this.createUserInput
-        }
-      }).then((response) => {
-        const authSignupResponse = response.data.authSignup;
-        if (authSignupResponse) {
-          this.$store.dispatch("login", authSignupResponse);
-          this.$store.dispatch("loading", false);
-          this.$router.push({name: "VerifyUser"});
-          this.$swal(this.toast_success);
-        } else {
-          this.$swal(this.toast_error);
-        }
-      }).catch(() => {
-        this.$store.dispatch("loading", false);
-        this.$swal(this.toast_error);
-      });
-    },
   },
 };
 </script>

@@ -1,9 +1,0 @@
-mutation createTicket($ticket: CreateTicketInput!) {
-    createTicket(ticket: $ticket) {
-        name
-        description
-        status
-        type
-        email
-    }
-}

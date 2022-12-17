@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import login from "@/graphql/mutations/login.gql";
 import Loader from "@/components/Loader.vue";
 
 export default {
@@ -57,29 +56,6 @@ export default {
     }
   },
   methods: {
-    async login() {
-      this.$store.dispatch("loading", true);
-      this.$apollo.mutate({
-        mutation: login,
-        variables: {
-          username: this.user.email,
-          password: this.user.password
-        }
-      }).then((response) => {
-        const authLoginResponse = response.data.authLogin;
-        if (authLoginResponse) {
-          this.$store.dispatch("login", authLoginResponse);
-          this.$store.dispatch("loading", false);
-          this.$router.push({name: "Home"});
-          this.$swal(this.toast_success);
-        } else {
-          this.$swal(this.toast_error);
-        }
-      }).catch(() => {
-        this.$store.dispatch("loading", false);
-        this.$swal(this.toast_error);
-      });
-    }
   }
 };
 </script>

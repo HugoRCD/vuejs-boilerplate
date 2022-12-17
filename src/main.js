@@ -9,8 +9,6 @@ import "./assets/style/main.scss";
 
 import clickOutside from "./plugins/directives.js";
 
-import {apolloProvider} from "@/plugins/apollo";
-
 const options = {
   toast: true,
   position: "top-end",
@@ -25,7 +23,6 @@ createApp(App)
   .use(store)
   .use(router)
   .use(i18n)
-  .use(apolloProvider)
   .use(VueSweetalert2, options)
   .directive("click-outside", clickOutside["click-outside"])
   .mount("#app");

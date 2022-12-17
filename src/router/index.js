@@ -17,10 +17,6 @@ import Settings from "@/views/Account/Settings.vue";
 import store from "@/store";
 import VerifyUser from "@/views/Auth/VerifyUser.vue";
 
-import refreshToken from "@/graphql/mutations/refreshToken.gql";
-
-import {apolloRefreshProvider} from "@/plugins/apollo";
-
 const routes = [
   {
     path: "/",
@@ -123,46 +119,22 @@ function isTokenExpired(token) {
   return Date.now() >= exp * 1000;
 }
 
-async function refreshTokenIfExpired(token, next) {
-  const response = await apolloRefreshProvider.defaultClient.mutate({
-    mutation: refreshToken,
-    variables: {
-      id: store.state.user.id,
-      refreshToken: token
-    }
-  });
-  if (response.data.refreshToken) {
-    store.dispatch("login", response.data.refreshToken).then(() => console.log("token refreshed"));
-    next();
-  } else {
-    store.dispatch("logout");
-    next({
-      path: "auth/login",
-    });
-  }
-}
-
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (store.getters.isLoggedIn) {
-      if (isTokenExpired(store.state.accessToken)) {
-        refreshTokenIfExpired(store.state.refreshToken, next);
-      }
-      if (isTokenExpired(store.state.refreshToken)) {
-        store.dispatch("logout").then(() => console.log("logged out"));
-        next({
-          path: "auth/login",
-        });
-      } else {
-        store.getters.user.isVerified ? next() : next({
-          path: "auth/verifyUser",
-        });
-      }
-    } else {
+    const token = localStorage.getItem("token");
+    if (!token) {
       next({
-        path: "auth/login",
-        query: {redirect: to.fullPath},
+        name: "Login",
+        query: {redirect: to.fullPath}
       });
+    } else if (isTokenExpired(token)) {
+      store.dispatch("auth/logout");
+      next({
+        name: "Login",
+        query: {redirect: to.fullPath}
+      });
+    } else {
+      next();
     }
   } else {
     next();

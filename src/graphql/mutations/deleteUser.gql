@@ -1,3 +1,0 @@
-mutation deleteUser($id: Float!) {
-    deleteUser(id: $id)
-}
