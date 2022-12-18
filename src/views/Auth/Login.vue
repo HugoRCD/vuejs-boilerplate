@@ -13,6 +13,7 @@
         <div class="form-item">
           <label class="label" for="password">{{ $t("password") }}</label>
           <input class="input" type="password" id="password" placeholder="123soleil" v-model="user.password"/>
+          <router-link :to="{name: 'ForgotPassword'}" class="forgot-password">{{ $t("forgotPassword") }}</router-link>
         </div>
         <div class="form-item my-lg">
           <button class="btn-primary fullwidth" type="submit">{{ $t("login") }}</button>

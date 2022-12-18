@@ -15,6 +15,8 @@ import Profile from "@/views/Account/Profile.vue";
 import Settings from "@/views/Account/Settings.vue";
 
 import VerifyUser from "@/views/Auth/VerifyUser.vue";
+import ForgotPassword from "@/views/Auth/ForgotPassword.vue";
+import ResetPassword from "@/views/Auth/ResetPassword.vue";
 
 const routes = [
   {
@@ -69,6 +71,16 @@ const routes = [
         path: "verifyUser",
         name: "VerifyUser",
         component: VerifyUser
+      },
+      {
+        path: "forgotPassword",
+        name: "ForgotPassword",
+        component: ForgotPassword
+      },
+      {
+        path: "/reset-password/:token",
+        name: "ResetPassword",
+        component: ResetPassword
       }
     ]
   },
