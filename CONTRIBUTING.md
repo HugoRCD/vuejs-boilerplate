@@ -1,6 +1,6 @@
 # Contributing to VueJS Template
 
-## We welcome contributions to this VueJS template! There are many ways you can help, whether it's reporting bugs, suggesting new features, or contributing code.
+### We welcome contributions to this VueJS template! There are many ways you can help, whether it's reporting bugs, suggesting new features, or contributing code.
 
 ### Reporting Bugs
 
@@ -8,7 +8,7 @@ If you find a bug in this VueJS Template, please report it by opening an issue i
 
 ### Suggesting New Features
 
-We're always open to new ideas for My VueJS Template. If you have a suggestion for a new feature, please open an issue in the GitHub repository and label it as a "feature request." Be sure to include a clear and concise description of the feature, as well as any relevant details or use cases.
+We're always open to new ideas for this VueJS Template. If you have a suggestion for a new feature, please open an issue in the GitHub repository and label it as a "feature request." Be sure to include a clear and concise description of the feature, as well as any relevant details or use cases.
 
 ### Contributing Code
 
