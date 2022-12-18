@@ -5,6 +5,9 @@
         <h1 class="title">{{ $t("login") }}</h1>
         <p class="text">{{ $t("loginText") }}</p>
       </div>
+      <div class="google-login my-md">
+        <GoogleLogin :callback="googleLogin" prompt />
+      </div>
       <form class="login-form" v-if="!loading" @submit.prevent="login">
         <div class="form-item">
           <label class="label" for="login">{{ $t("login") }}</label>
@@ -30,11 +33,12 @@
 </template>
 
 <script>
+import { GoogleLogin } from "vue3-google-login";
 import Loader from "@/components/Loader.vue";
 
 export default {
   name: "Login",
-  components: {Loader},
+  components: {Loader, GoogleLogin},
   data() {
     return {
       user: {
@@ -61,10 +65,41 @@ export default {
         .catch(() => {
           this.$store.dispatch("loading", false);
         });
+    },
+    async googleLogin(response) {
+      const token = response.credential;
+      this.$http.post("/auth/google", {token})
+        .then((response) => {
+          this.$http.defaults.headers.common["Authorization"] = "Bearer " + response.data.accessToken;
+          this.$store.dispatch("login", response.data);
+          this.$router.push({name: "Profile"});
+        })
+        .catch(() => {
+          this.$store.dispatch("loading", false);
+        });
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
+.google-login {
+  display: flex;
+  justify-content: center;
+  .btn-google {
+    background-color: #4285f4;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .fa-google {
+      margin-right: 0.5rem;
+    }
+  }
+}
 </style>

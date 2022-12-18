@@ -45,10 +45,10 @@ export default {
     };
   },
   created() {
-    this.user = this.getUser();
+    this.user = this.getCurrentUser();
   },
   methods: {
-    async getUser() {
+    async getCurrentUser() {
       this.$store.dispatch("loading", true);
       this.$http.get("/user").then((response) => {
         this.user = response.data;
