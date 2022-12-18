@@ -68,7 +68,7 @@ export default {
     },
     async googleLogin(response) {
       const token = response.credential;
-      this.$http.post("/auth/google", {token})
+      this.$http.post("/auth/google", {token}, {withCredentials: true})
         .then((response) => {
           this.$http.defaults.headers.common["Authorization"] = "Bearer " + response.data.accessToken;
           this.$store.dispatch("login", response.data);
