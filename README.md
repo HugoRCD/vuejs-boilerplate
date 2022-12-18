@@ -31,7 +31,7 @@ yarn run serve
 Now you can open the app in your browser at http://localhost:8080
 
 ## Documentation
-For more information on how to use My VueJS App, see the [documentation](./docs).
+For more information on how to use this VueJS App, see the [documentation](./docs).
 
 ## License
 This VueJS Template is licensed under the [MIT License](./LICENSE).
