@@ -16,7 +16,7 @@ Everything is connect and ready to use to a working api in NestJS check here !!!
 - This template is fully responsive and use CSS pre-processors (SCSS)
 
 ## Getting Started
-To get started with My VueJS App, follow these steps:
+To get started with this VueJS App, follow these steps:
 
 ### Clone the repository:
 ```
