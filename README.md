@@ -8,6 +8,9 @@ Everything is connect and ready to use to a working api in NestJS check here !!!
 - Dark and light theme
 - Authentication with JSON Web Tokens (JWTs) and refresh tokens
 - Working forgot password
+- Role Feature
+- Admin Dashboard
+- Support Ticket integration
 - This template is fully responsive and use CSS pre-processors (SCSS)
 
 ## Getting Started
