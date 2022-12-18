@@ -1,4 +1,6 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/96ef5ef23a4442c2bf73762f46e52749)](https://www.codacy.com/gh/HugoRCD/vuejs-boilerplate/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=HugoRCD/vuejs-boilerplate&amp;utm_campaign=Badge_Grade)
 # Introduction
+
 Here is a completely working VueJS Template ! This app is a single-page application built with VueJS and includes features such as OAuth authentication with Google, translation with I18n, and a dark and light theme and many more...
 Everything is connect and ready to use to a working api in NestJS check here !!! [NestJS Template](https://github.com/HugoRCD/nestjs-boilerplate)
 
