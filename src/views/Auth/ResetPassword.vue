@@ -18,6 +18,7 @@
             id="password"
             placeholder="123soleil"
             v-model="password"
+            required
           />
         </div>
         <div class="form-item">
@@ -30,6 +31,7 @@
             id="passwordConfirmation"
             placeholder="123soleil"
             v-model="passwordConfirmation"
+            required
           />
         </div>
         <div class="form-item center">

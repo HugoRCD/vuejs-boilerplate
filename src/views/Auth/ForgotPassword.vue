@@ -18,6 +18,7 @@
             id="email"
             placeholder="demo@contact.com"
             v-model="email"
+            required
           />
         </div>
         <div class="form-item center">

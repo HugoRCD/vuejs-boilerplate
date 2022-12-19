@@ -17,6 +17,7 @@
             id="login"
             placeholder="contact@gmail.com"
             v-model="user.login"
+            required
           />
         </div>
         <div class="form-item">
@@ -27,6 +28,7 @@
             id="password"
             placeholder="123soleil"
             v-model="user.password"
+            required
           />
           <router-link
             :to="{ name: 'ForgotPassword' }"
@@ -39,7 +41,7 @@
             {{ $t("login") }}
           </button>
         </div>
-        <div class="login-footer">
+        <div class="login-footer center">
           <p class="text">
             {{ $t("noAccount") }}
             <router-link :to="{ name: 'Signup' }">{{
@@ -81,7 +83,8 @@ export default {
         .then((response) => {
           this.$http.defaults.headers.common["Authorization"] =
             "Bearer " + response.data.accessToken;
-          this.$store.dispatch("login", response.data);
+          const accessToken = response.data.accessToken;
+          this.$store.dispatch("login", accessToken);
           this.$store.dispatch("loading", false);
           this.$router.push({ name: "Profile" });
         })
@@ -90,14 +93,18 @@ export default {
         });
     },
     async googleLogin(response) {
+      this.$store.dispatch("loading", true);
       const token = response.credential;
       this.$http
         .post("/auth/google", { token }, { withCredentials: true })
         .then((response) => {
           this.$http.defaults.headers.common["Authorization"] =
             "Bearer " + response.data.accessToken;
-          this.$store.dispatch("login", response.data);
+          const accessToken = response.data.accessToken;
+          console.log("Access Token: ", accessToken);
+          this.$store.dispatch("login", accessToken);
           this.$router.push({ name: "Profile" });
+          this.$store.dispatch("loading", false);
         })
         .catch(() => {
           this.$store.dispatch("loading", false);
@@ -111,22 +118,5 @@ export default {
 .google-login {
   display: flex;
   justify-content: center;
-
-  .btn-google {
-    background-color: #4285f4;
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-    font-size: 1rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .fa-google {
-      margin-right: 0.5rem;
-    }
-  }
 }
 </style>

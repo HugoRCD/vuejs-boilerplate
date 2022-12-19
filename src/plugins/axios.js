@@ -22,6 +22,7 @@ axios.interceptors.response.use(
         store.commit("setAccessToken", response.data.accessToken);
         error.config.headers["Authorization"] =
           "Bearer " + response.data.accessToken;
+        isRefreshing = false;
         return axios.request(error.config);
       }
     }

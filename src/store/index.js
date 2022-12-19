@@ -28,13 +28,12 @@ export default createStore({
     },
   },
   actions: {
-    login: ({ commit }, payload) => {
-      localStorage.setItem("accessToken", payload.accessToken);
-      commit("setAccessToken", payload.accessToken);
+    login: ({ commit }, accessToken) => {
+      localStorage.setItem("accessToken", accessToken);
+      commit("setAccessToken", accessToken);
     },
     logout: ({ commit }) => {
       localStorage.removeItem("accessToken");
-      localStorage.removeItem("user");
       commit("reset", "");
     },
     loading: ({ commit }, payload) => {

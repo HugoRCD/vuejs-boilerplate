@@ -14,6 +14,11 @@ import Navbar from "../../components/Navbar.vue";
 export default {
   name: "App",
   components: { Navbar },
+  created() {
+    if (localStorage.getItem("accessToken")) {
+      this.$store.dispatch("login", localStorage.getItem("accessToken"));
+    }
+  },
 };
 </script>
 
