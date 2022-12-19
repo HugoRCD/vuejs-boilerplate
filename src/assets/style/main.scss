@@ -6,7 +6,6 @@
 @import "animation";
 @import "scrollbar";
 
-// Global styles
 [data-theme="dark"] {
   --bg-primary: #111827;
   --bg-secondary: #1F2937;
@@ -67,7 +66,6 @@ body {
   }
 }
 
-// Div styles
 .middle {
   display: flex;
   justify-content: center;
@@ -99,12 +97,10 @@ body {
   height: 100vh;
 }
 
-// Container styles
 .container {
   padding: 2rem;
 }
 
-// Card styles
 .card {
   background-color: var(--bg-primary);
   border: 1px solid var(--bg-tertiary);
@@ -123,7 +119,6 @@ body {
   z-index: 999;
 }
 
-// Title styles
 .title {
   font-size: var(--font-xxl);
   font-weight: var(--font-bold);
@@ -131,7 +126,6 @@ body {
   margin-bottom: 0.5rem;
 }
 
-// Text styles
 .text {
   font-size: var(--font-base);
   color: var(--font-color-secondary);
@@ -154,7 +148,6 @@ body {
   width: 100%;
 }
 
-// Label styles
 .label {
   color: var(--font-color);
   font-size: var(--font-sm);
@@ -162,7 +155,6 @@ body {
   font-weight: var(--font-bold);
 }
 
-// Input styles
 .input {
   width: 100%;
   padding: var(--btn-padding);
@@ -173,7 +165,6 @@ body {
   outline: none;
 }
 
-// Form styles
 .form {
   display: flex;
   padding: 1rem;
@@ -189,8 +180,6 @@ body {
   display: flex;
   gap: 1rem;
 }
-
-// Button styles
 
 .btn-primary {
   padding: var(--btn-padding);
