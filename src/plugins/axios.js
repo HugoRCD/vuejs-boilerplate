@@ -4,7 +4,8 @@ import store from "@/store";
 axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 axios.defaults.headers.common["Accept"] = "application/json";
 axios.defaults.headers.common["Content-Type"] = "application/json";
-axios.defaults.headers.common["Authorization"] = "Bearer " + store.state.token;
+axios.defaults.headers.common["Authorization"] =
+  "Bearer " + localStorage.getItem("accessToken");
 
 let isRefreshing = false;
 
