@@ -1,26 +1,30 @@
 <template>
   <div class="navbar fullwidth">
-    <Logo/>
+    <Logo />
     <div class="nav-container">
       <div class="nav-link">
-        <router-link v-for="link in nav" :key="link.link" :to="{ name: link.name }">
+        <router-link
+          v-for="link in nav"
+          :key="link.link"
+          :to="{ name: link.name }"
+        >
           {{ $t(link.name.toLowerCase()) }}
         </router-link>
       </div>
       <div class="nav-button" v-if="!isLogged">
-        <router-link :to="{name: 'Login'}">
+        <router-link :to="{ name: 'Login' }">
           <button class="btn-secondary">{{ $t("login") }}</button>
         </router-link>
-        <router-link :to="{name: 'Signup'}">
+        <router-link :to="{ name: 'Signup' }">
           <button class="btn-primary">{{ $t("signup") }}</button>
         </router-link>
-        <ThemeSwitcher/>
-        <LanguageSelector/>
+        <ThemeSwitcher />
+        <LanguageSelector />
       </div>
       <div class="nav-button" v-else>
-        <ProfilTool/>
-        <ThemeSwitcher/>
-        <LanguageSelector/>
+        <ProfilTool />
+        <ThemeSwitcher />
+        <LanguageSelector />
       </div>
       <div v-if="!showMenu" class="burger-menu" @click="toggleMenu">
         <i class="fa-sharp fa-solid fa-bars fa-xl"></i>
@@ -33,7 +37,12 @@
   <div class="backdrop" v-if="showMenu"></div>
   <div class="dropdown-menu" v-if="showMenu" v-click-outside="hide">
     <div class="dropdown-link flex-column">
-      <router-link v-for="link in nav" :key="link.path" :to="link.path" @click="hide">
+      <router-link
+        v-for="link in nav"
+        :key="link.path"
+        :to="link.path"
+        @click="hide"
+      >
         {{ $t(link.name.toLowerCase()) }}
       </router-link>
     </div>
@@ -49,8 +58,8 @@
       <i class="fas fa-user-circle fa-xl"></i>
     </div>
     <div class="dropdown-button flex-row justify-center mb-lg">
-      <ThemeSwitcher/>
-      <LanguageSelector/>
+      <ThemeSwitcher />
+      <LanguageSelector />
     </div>
   </div>
 </template>
@@ -67,7 +76,7 @@ export default {
     Logo,
     ThemeSwitcher,
     LanguageSelector,
-    ProfilTool
+    ProfilTool,
   },
   data() {
     return {
@@ -76,35 +85,35 @@ export default {
       navLinks: [
         {
           name: "Home",
-          path: "/"
+          path: "/",
         },
         {
           name: "About",
-          path: "/about"
+          path: "/about",
         },
         {
           name: "Contact",
-          path: "/contact"
-        }
+          path: "/contact",
+        },
       ],
       navLinksLogged: [
         {
           name: "Home",
-          path: "/"
+          path: "/",
         },
         {
           name: "About",
-          path: "/about"
+          path: "/about",
         },
         {
           name: "Contact",
-          path: "/contact"
+          path: "/contact",
         },
         {
           name: "Dashboard",
-          path: "/dashboard"
-        }
-      ]
+          path: "/dashboard",
+        },
+      ],
     };
   },
   created() {
@@ -112,10 +121,8 @@ export default {
   },
   computed: {
     isLogged() {
-      if (this.$store.getters.isLoggedIn)
-        this.nav = this.navLinksLogged;
-      else
-        this.nav = this.navLinks;
+      if (this.$store.getters.isLoggedIn) this.nav = this.navLinksLogged;
+      else this.nav = this.navLinks;
       return this.$store.getters.isLoggedIn;
     },
     user() {
@@ -128,7 +135,7 @@ export default {
     },
     hide() {
       this.showMenu = false;
-    }
+    },
   },
 };
 </script>

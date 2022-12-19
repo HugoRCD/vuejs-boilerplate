@@ -5,7 +5,11 @@
 
   <div v-if="showSupportDropdown" class="backdrop"></div>
 
-  <div class="support-dropdown" v-if="showSupportDropdown" v-click-outside="hide">
+  <div
+    class="support-dropdown"
+    v-if="showSupportDropdown"
+    v-click-outside="hide"
+  >
     <div class="form" v-if="!isLoading">
       <div class="form-item left">
         <h1 class="title">{{ $t("support") }}</h1>
@@ -21,13 +25,21 @@
       </div>
       <div class="form-item left">
         <label class="label" for="description">{{ $t("message") }}</label>
-        <textarea class="input mt-sm" id="description" required :placeholder="$t('message')" v-model="createTicketInput.description"></textarea>
+        <textarea
+          class="input mt-sm"
+          id="description"
+          required
+          :placeholder="$t('message')"
+          v-model="createTicketInput.description"
+        ></textarea>
       </div>
       <div class="form-item">
-        <button class="btn-primary fullwidth" @click="sendTicket">{{ $t("send") }}</button>
+        <button class="btn-primary fullwidth" @click="sendTicket">
+          {{ $t("send") }}
+        </button>
       </div>
     </div>
-    <Loader :isText="false" v-else/>
+    <Loader :isText="false" v-else />
   </div>
 </template>
 
@@ -36,7 +48,7 @@ import Loader from "@/components/Loader.vue";
 
 export default {
   name: "TextSupport",
-  components: {Loader},
+  components: { Loader },
   data() {
     return {
       showSupportDropdown: false,
@@ -58,7 +70,7 @@ export default {
     hide() {
       this.showSupportDropdown = false;
     },
-  }
+  },
 };
 </script>
 

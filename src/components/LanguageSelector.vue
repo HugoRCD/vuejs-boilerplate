@@ -18,8 +18,8 @@ export default {
         timer: 1500,
         position: "top-end",
         timerProgressBar: true,
-        showConfirmButton: false
-      }
+        showConfirmButton: false,
+      },
     };
   },
   methods: {
@@ -31,8 +31,8 @@ export default {
         this.$i18n.locale = "fr";
         this.$swal(this.toast);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

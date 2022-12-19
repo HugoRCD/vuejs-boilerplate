@@ -13,7 +13,7 @@ import Navbar from "@/components/Navbar.vue";
 
 export default {
   name: "Account",
-  components: {Navbar},
+  components: { Navbar },
   computed: {
     user() {
       return this.$store.getters.user;
@@ -26,10 +26,9 @@ export default {
       } else {
         return "user";
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

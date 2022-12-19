@@ -1,7 +1,7 @@
 <template>
   <router-link :to="{ name: 'Home' }">
     <div class="logo-section">
-      <img src="../assets/media/logo.png" alt="logo">
+      <img src="../assets/media/logo.png" alt="logo" />
       <h1>Vue Template</h1>
     </div>
   </router-link>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: "Logo"
+  name: "Logo",
 };
 </script>
 

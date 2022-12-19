@@ -17,7 +17,7 @@ import Logo from "@/components/Logo.vue";
 
 export default {
   name: "Auth",
-  components: {Logo, ThemeSwitcher, LanguageSelector}
+  components: { Logo, ThemeSwitcher, LanguageSelector },
 };
 </script>
 

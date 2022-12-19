@@ -1,5 +1,9 @@
 <template>
-  <div class="env-checker center" v-bind:class="env" v-if="env !== 'production'">
+  <div
+    class="env-checker center"
+    v-bind:class="env"
+    v-if="env !== 'production'"
+  >
     {{ env }}
   </div>
 </template>
@@ -9,9 +13,9 @@ export default {
   name: "EnvChecker",
   data() {
     return {
-      env: process.env.VUE_APP_ENV
+      env: process.env.VUE_APP_ENV,
     };
-  }
+  },
 };
 </script>
 

@@ -10,7 +10,7 @@ export default {
   name: "theme-switcher",
   data() {
     return {
-      theme: "dark"
+      theme: "dark",
     };
   },
   created() {
@@ -25,7 +25,7 @@ export default {
         document.documentElement.setAttribute("data-theme", "dark");
         this.theme = "dark";
       }
-    }
+    },
   },
 };
 </script>

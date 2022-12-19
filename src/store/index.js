@@ -1,4 +1,4 @@
-import {createStore} from "vuex";
+import { createStore } from "vuex";
 
 const getDefaultState = () => {
   return {
@@ -28,22 +28,22 @@ export default createStore({
     },
   },
   actions: {
-    login: ({commit}, payload) => {
+    login: ({ commit }, payload) => {
       localStorage.setItem("accessToken", payload.accessToken);
       commit("setAccessToken", payload.accessToken);
     },
-    logout: ({commit}) => {
+    logout: ({ commit }) => {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("user");
       commit("reset", "");
     },
-    loading: ({commit}, payload) => {
+    loading: ({ commit }, payload) => {
       commit("setLoading", payload);
     },
-    insertUser: ({commit}, user) => {
+    insertUser: ({ commit }, user) => {
       localStorage.setItem("user", JSON.stringify(user));
       commit("setUser", user);
-    }
+    },
   },
   getters: {
     isLoading(state) {
@@ -54,6 +54,6 @@ export default createStore({
     },
     user(state) {
       return state.user;
-    }
+    },
   },
 });

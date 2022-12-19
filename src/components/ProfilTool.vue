@@ -9,11 +9,17 @@
   <div class="profil-section" v-if="menuOpen" v-click-outside="hide">
     <div class="dropdown-profil">
       <div class="dropdown-profil-container">
-        <router-link class="dropdown-profil-item" v-for="link in navLinks" :key="link.path" :to="{ name: link.name }" @click="hide">
+        <router-link
+          class="dropdown-profil-item"
+          v-for="link in navLinks"
+          :key="link.path"
+          :to="{ name: link.name }"
+          @click="hide"
+        >
           {{ $t(link.name.toLowerCase()) }}
         </router-link>
         <div class="separator"></div>
-        <TextSupport/>
+        <TextSupport />
         <div class="separator"></div>
         <div class="dropdown-profil-item logout" @click="logout()">
           {{ $t("logout") }}
@@ -28,24 +34,24 @@ import TextSupport from "@/components/TextSupport.vue";
 
 export default {
   name: "ProfilTool",
-  components: {TextSupport},
+  components: { TextSupport },
   data() {
     return {
       menuOpen: false,
       navLinks: [
         {
           name: "Profile",
-          path: "/profile"
+          path: "/profile",
         },
         {
           name: "Dashboard",
-          path: "/dashboard"
+          path: "/dashboard",
         },
         {
           name: "Settings",
-          path: "/settings"
-        }
-      ]
+          path: "/settings",
+        },
+      ],
     };
   },
   computed: {
@@ -60,7 +66,7 @@ export default {
       } else {
         return "user";
       }
-    }
+    },
   },
   methods: {
     hide() {
@@ -71,16 +77,19 @@ export default {
     },
     async logout() {
       this.$store.dispatch("loading", true);
-      this.$http.post("/auth/logout", {}, {withCredentials: true}).then(() => {
-        this.$store.dispatch("loading", false);
-        this.$store.dispatch("logout");
-        this.$router.push({name: "Login"});
-      }).catch((error) => {
-        this.$store.dispatch("loading", false);
-        console.log(error);
-      });
+      this.$http
+        .post("/auth/logout", {}, { withCredentials: true })
+        .then(() => {
+          this.$store.dispatch("loading", false);
+          this.$store.dispatch("logout");
+          this.$router.push({ name: "Login" });
+        })
+        .catch((error) => {
+          this.$store.dispatch("loading", false);
+          console.log(error);
+        });
     },
-  }
+  },
 };
 </script>
 
@@ -91,7 +100,7 @@ export default {
   display: flex;
   align-items: center;
   cursor: pointer;
-  gap: 0.70rem;
+  gap: 0.7rem;
   background-color: var(--bg-tertiary);
   color: var(--font-color);
   transition: all 0.3s ease-in-out;
@@ -106,7 +115,6 @@ export default {
   &:hover {
     background-color: var(--bg-primary);
   }
-
 }
 
 .profil-section {

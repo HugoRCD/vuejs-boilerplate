@@ -14,9 +14,8 @@ export default {
   },
   created() {
     this.username = this.$store.getters.user.username;
-  }
+  },
 };
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

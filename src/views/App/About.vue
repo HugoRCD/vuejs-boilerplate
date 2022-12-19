@@ -6,9 +6,8 @@
 
 <script>
 export default {
-  name: "About"
+  name: "About",
 };
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

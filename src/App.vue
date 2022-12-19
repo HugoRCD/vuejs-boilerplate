@@ -1,5 +1,5 @@
 <template>
-  <Navbar/>
+  <Navbar />
   <div class="main-router">
     <router-view v-slot="{ Component }">
       <transition name="fade">
@@ -7,7 +7,7 @@
       </transition>
     </router-view>
   </div>
-  <EnvChecker/>
+  <EnvChecker />
 </template>
 
 <script>
@@ -16,7 +16,7 @@ import Navbar from "@/components/Navbar.vue";
 
 export default {
   name: "App",
-  components: {Navbar, EnvChecker},
+  components: { Navbar, EnvChecker },
 };
 </script>
 

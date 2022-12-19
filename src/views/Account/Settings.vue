@@ -1,8 +1,6 @@
 <template>
   <div class="settings middle full-height">
-    <div>
-      {{ $t("settings") }} of {{ user.username }}
-    </div>
+    <div>{{ $t("settings") }} of {{ user.username }}</div>
   </div>
 </template>
 
@@ -21,10 +19,9 @@ export default {
       } else {
         return "user";
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

@@ -1,4 +1,4 @@
-import {createApp} from "vue";
+import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
@@ -19,7 +19,6 @@ const options = {
   timerProgressBar: true,
   confirmButtonColor: "var(--accent)",
 };
-
 
 const app = createApp(App);
 app.use(store);

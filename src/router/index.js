@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory} from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import App from "@/views/App/App.vue";
 import Home from "@/views/App/Home.vue";
 import About from "@/views/App/About.vue";
@@ -26,17 +26,17 @@ const routes = [
       {
         path: "",
         name: "Home",
-        component: Home
+        component: Home,
       },
       {
         path: "/about",
         name: "About",
-        component: About
+        component: About,
       },
       {
         path: "/contact",
         name: "Contact",
-        component: Contact
+        component: Contact,
       },
       {
         path: "/login",
@@ -48,10 +48,10 @@ const routes = [
         name: "Dashboard",
         component: Dashboard,
         meta: {
-          requiresAuth: true
-        }
+          requiresAuth: true,
+        },
       },
-    ]
+    ],
   },
   {
     path: "/auth",
@@ -60,29 +60,29 @@ const routes = [
       {
         path: "signup",
         name: "Signup",
-        component: Signup
+        component: Signup,
       },
       {
         path: "login",
         name: "Login",
-        component: Login
+        component: Login,
       },
       {
         path: "verifyUser",
         name: "VerifyUser",
-        component: VerifyUser
+        component: VerifyUser,
       },
       {
         path: "forgotPassword",
         name: "ForgotPassword",
-        component: ForgotPassword
+        component: ForgotPassword,
       },
       {
         path: "/reset-password/:token",
         name: "ResetPassword",
-        component: ResetPassword
-      }
-    ]
+        component: ResetPassword,
+      },
+    ],
   },
   {
     path: "/account",
@@ -97,22 +97,22 @@ const routes = [
         path: "settings",
         name: "Settings",
         component: Settings,
-      }
+      },
     ],
     meta: {
-      requiresAuth: true
-    }
+      requiresAuth: true,
+    },
   },
   {
     path: "/:catchAll(.*)",
     name: "error404",
-    component: error404
-  }
+    component: error404,
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
 });
 
 router.beforeEach((to, from, next) => {

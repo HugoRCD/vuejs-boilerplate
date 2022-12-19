@@ -8,17 +8,25 @@
       <div class="verify-form" v-if="!isLoading">
         <div class="form-item">
           <label class="label" for="verify">{{ $t("verify") }}</label>
-          <input class="input mt-sm" type="text" id="verify" placeholder="1262143172" v-model="code"/>
+          <input
+            class="input mt-sm"
+            type="text"
+            id="verify"
+            placeholder="1262143172"
+            v-model="code"
+          />
         </div>
         <div class="form-item center" @click="verify">
           <button class="btn-primary fullwidth">{{ $t("verify") }}</button>
         </div>
         <div class="verify-footer center">
           <p class="text">{{ $t("verifyEmailNotReceived") }}</p>
-          <button class="btn-secondary mt-md" @click="getVerificationCode">{{ $t("resendCode") }}</button>
+          <button class="btn-secondary mt-md" @click="getVerificationCode">
+            {{ $t("resendCode") }}
+          </button>
         </div>
       </div>
-      <Loader :isText="false" v-else/>
+      <Loader :isText="false" v-else />
     </div>
   </div>
 </template>
@@ -28,7 +36,7 @@ import Loader from "@/components/Loader.vue";
 
 export default {
   name: "VerifyUser",
-  components: {Loader},
+  components: { Loader },
   data() {
     return {
       code: "",
@@ -39,10 +47,8 @@ export default {
       return this.$store.getters.isLoading;
     },
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>
