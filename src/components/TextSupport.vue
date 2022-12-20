@@ -70,6 +70,23 @@ export default {
     hide() {
       this.showSupportDropdown = false;
     },
+    sendTicket() {
+      this.$store.dispatch("loading", true);
+      this.$http
+        .post("/ticket", this.createTicketInput)
+        .then((response) => {
+          if (response.data.success) {
+            this.$store.dispatch("loading", false);
+            this.showSupportDropdown = false;
+          } else {
+            this.$store.dispatch("loading", false);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          this.$store.dispatch("loading", false);
+        });
+    },
   },
 };
 </script>

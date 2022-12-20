@@ -101,7 +101,6 @@ export default {
           this.$http.defaults.headers.common["Authorization"] =
             "Bearer " + response.data.accessToken;
           const accessToken = response.data.accessToken;
-          console.log("Access Token: ", accessToken);
           this.$store.dispatch("login", accessToken);
           this.$router.push({ name: "Profile" });
           this.$store.dispatch("loading", false);
