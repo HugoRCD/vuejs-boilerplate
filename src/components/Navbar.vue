@@ -149,9 +149,9 @@ export default {
   padding: 1rem 2rem;
   background-color: var(--bg-secondary);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: fixed;
+  position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
 
   .nav-container {
     display: flex;
@@ -205,12 +205,6 @@ export default {
         align-items: center;
       }
     }
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .navbar {
-    z-index: 1000;
   }
 }
 

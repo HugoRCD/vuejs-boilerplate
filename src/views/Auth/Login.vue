@@ -5,8 +5,8 @@
         <h1 class="title">{{ $t("login") }}</h1>
         <p class="text">{{ $t("loginText") }}</p>
       </div>
-      <div class="google-login my-md">
-        <GoogleLogin :callback="googleLogin" prompt />
+      <div class="google-login middle my-md">
+        <GoogleLogin :callback="googleLogin" />
       </div>
       <form class="login-form" v-if="!loading" @submit.prevent="login">
         <div class="form-item">
@@ -58,6 +58,8 @@
 <script>
 import { GoogleLogin } from "vue3-google-login";
 import Loader from "@/components/Loader.vue";
+import { login } from "@/api/auth/login";
+import { googleLogin } from "@/api/auth/google-login";
 
 export default {
   name: "Login",
@@ -77,45 +79,13 @@ export default {
   },
   methods: {
     login() {
-      this.$store.dispatch("loading", true);
-      this.$http
-        .post("/auth/login", this.user, { withCredentials: true })
-        .then((response) => {
-          this.$http.defaults.headers.common["Authorization"] =
-            "Bearer " + response.data.accessToken;
-          const accessToken = response.data.accessToken;
-          this.$store.dispatch("login", accessToken);
-          this.$store.dispatch("loading", false);
-          this.$router.push({ name: "Profile" });
-        })
-        .catch(() => {
-          this.$store.dispatch("loading", false);
-        });
+      login(this.user);
     },
-    async googleLogin(response) {
-      this.$store.dispatch("loading", true);
-      const token = response.credential;
-      this.$http
-        .post("/auth/google", { token }, { withCredentials: true })
-        .then((response) => {
-          this.$http.defaults.headers.common["Authorization"] =
-            "Bearer " + response.data.accessToken;
-          const accessToken = response.data.accessToken;
-          this.$store.dispatch("login", accessToken);
-          this.$router.push({ name: "Profile" });
-          this.$store.dispatch("loading", false);
-        })
-        .catch(() => {
-          this.$store.dispatch("loading", false);
-        });
+    googleLogin(response) {
+      googleLogin(response);
     },
   },
 };
 </script>
 
-<style scoped lang="scss">
-.google-login {
-  display: flex;
-  justify-content: center;
-}
-</style>
+<style scoped lang="scss"></style>

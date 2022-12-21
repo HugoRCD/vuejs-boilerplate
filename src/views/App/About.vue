@@ -1,5 +1,5 @@
 <template>
-  <div class="about middle full-height">
+  <div class="about">
     {{ $t("about") }}
   </div>
 </template>

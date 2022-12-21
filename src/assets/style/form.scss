@@ -13,3 +13,10 @@
   display: flex;
   gap: 1rem;
 }
+
+.label {
+  color: var(--font-color);
+  font-size: var(--font-sm);
+  margin-bottom: 0.5rem;
+  font-weight: var(--font-bold);
+}

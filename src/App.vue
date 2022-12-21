@@ -17,11 +17,15 @@ import Navbar from "@/components/Navbar.vue";
 export default {
   name: "App",
   components: { Navbar, EnvChecker },
+  created() {
+    if (localStorage.getItem("accessToken")) {
+      this.$store.dispatch(
+        "insertAccessToken",
+        localStorage.getItem("accessToken"),
+      );
+    }
+  },
 };
 </script>
 
-<style lang="scss">
-.main-router {
-  margin-top: 3rem;
-}
-</style>
+<style lang="scss"></style>

@@ -28,9 +28,10 @@ export default createStore({
     },
   },
   actions: {
-    login: ({ commit }, accessToken) => {
-      localStorage.setItem("accessToken", accessToken);
-      commit("setAccessToken", accessToken);
+    login: ({ commit }, payload) => {
+      localStorage.setItem("accessToken", payload.accessToken);
+      commit("setAccessToken", payload.accessToken);
+      commit("setUser", payload.user);
     },
     logout: ({ commit }) => {
       localStorage.removeItem("accessToken");
@@ -39,8 +40,11 @@ export default createStore({
     loading: ({ commit }, payload) => {
       commit("setLoading", payload);
     },
+    insertAccessToken: ({ commit }, token) => {
+      localStorage.setItem("accessToken", token);
+      commit("setAccessToken", token);
+    },
     insertUser: ({ commit }, user) => {
-      localStorage.setItem("user", JSON.stringify(user));
       commit("setUser", user);
     },
   },

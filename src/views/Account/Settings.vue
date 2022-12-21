@@ -1,5 +1,5 @@
 <template>
-  <div class="settings middle full-height">
+  <div class="settings">
     <div>{{ $t("settings") }} of {{ user.username }}</div>
   </div>
 </template>

@@ -59,6 +59,7 @@ export default {
           this.user = response.data;
         })
         .then(() => {
+          this.$store.dispatch("insertUser", this.user);
           this.$store.dispatch("loading", false);
           this.editMode = false;
         })

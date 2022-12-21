@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard middle full-height">
+  <div class="dashboard">
     <h1 class="title">{{ $t("hello") }} {{ username }}</h1>
   </div>
 </template>
