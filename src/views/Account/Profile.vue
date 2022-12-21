@@ -1,5 +1,5 @@
 <template>
-  <div class="profile container flex-row">
+  <div class="profile container flex-column">
     <div class="profile-main-section flex-column">
       <div class="profile-header flex-column">
         <i class="fas fa-user-circle fa-5x"></i>
@@ -33,16 +33,13 @@
 </template>
 
 <script>
+import { updateUser } from "@/api/user/updateUser";
+
 export default {
   name: "Profile",
   data() {
     return {
-      user: {
-        username: "",
-        firstname: "",
-        lastname: "",
-        email: "",
-      },
+      user: {},
       password: "",
       editMode: false,
     };
@@ -51,6 +48,9 @@ export default {
     this.user = this.getCurrentUser();
   },
   methods: {
+    updateUser() {
+      this.user = updateUser(this.user.id, this.user);
+    },
     async getCurrentUser() {
       this.$store.dispatch("loading", true);
       this.$http
@@ -89,7 +89,7 @@ export default {
 <style scoped lang="scss">
 .profile {
   justify-content: center;
-  gap: 2rem;
+  gap: 3rem;
   color: var(--font-color);
 }
 
