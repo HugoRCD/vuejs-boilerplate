@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --color-text-base: #ffffff;
+    --color-text-muted: #9CA3AF;
+    --color-text-inverted: #111827;
+    --color-fill: #111827;
+    --color-button-accent: #10B981;
+    --color-button-accent-hover: #059669;
+    --color-button-muted: #374151;
+  }
+}
+
+
 @import "margin";
 @import "animation";
 @import "scrollbar";

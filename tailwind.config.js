@@ -1,6 +1,27 @@
+function withOpacity(variableName) {
+  return ({ opacityValue }) => {
+    if (opacityValue !== undefined) {
+      return `rgba(var(${variableName}), ${opacityValue})`;
+    }
+    return `rgb(var(${variableName}))`;
+  };
+}
+
 module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
+    textColor: {
+      skin: {
+        base: "var(--text-color-base)",
+        muted: "var(--text-color-muted)",
+      },
+    },
+    backgroundColor: {
+      skin: {
+        fill: "var(--color-fill)",
+        muted: withOpacity("--color-muted"),
+      },
+    },
     fontSize: {
       sm: ["0.875rem", { lineHeight: "1.25rem", letterSpacing: "-0.03em" }],
       base: ["1rem", { lineHeight: "1.5rem", letterSpacing: "-0.03em" }],
