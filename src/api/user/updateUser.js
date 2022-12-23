@@ -1,16 +1,14 @@
 import store from "@/store";
 import axios from "@/plugins/axios";
 
-export function updateUser(id, user) {
+export async function updateUser(id, user) {
   store.dispatch("loading", true).then();
-  axios
-    .patch("/user/" + id, user)
-    .then((response) => {
-      store.dispatch("loading", false).then();
-      return response.data.user;
-    })
-    .catch(() => {
-      store.dispatch("loading", false).then();
-      return null;
-    });
+  const response = await axios.patch("/user/" + id, user);
+  if (response.status === 200) {
+    store.dispatch("loading", false).then();
+    return response.data.content.user;
+  } else {
+    store.dispatch("loading", false).then();
+    return user;
+  }
 }

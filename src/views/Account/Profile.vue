@@ -15,7 +15,7 @@
         <i class="fas fa-trash-alt fa-md" @click="deleteUser"></i>
       </div>
     </div>
-    <div class="profile-content">
+    <div class="profile-content" v-if="!isLoading">
       <div class="profile-content-item flex-row">
         <p>{{ $t("firstname") }}:</p>
         <input class="custom-input" type="text" v-model="user.firstname" />
@@ -29,14 +29,17 @@
         <input class="custom-input" type="text" v-model="user.email" />
       </div>
     </div>
+    <Loader v-else />
   </div>
 </template>
 
 <script>
 import { updateUser } from "@/api/user/updateUser";
+import Loader from "@/components/Loader.vue";
 
 export default {
   name: "Profile",
+  components: { Loader },
   data() {
     return {
       user: {},
@@ -47,9 +50,14 @@ export default {
   created() {
     this.user = this.getCurrentUser();
   },
+  computed: {
+    isLoading() {
+      return this.$store.getters.isLoading;
+    },
+  },
   methods: {
-    updateUser() {
-      this.user = updateUser(this.user.id, this.user);
+    async updateUser() {
+      this.user = await updateUser(this.user.id, this.user);
     },
     async getCurrentUser() {
       this.$store.dispatch("loading", true);
