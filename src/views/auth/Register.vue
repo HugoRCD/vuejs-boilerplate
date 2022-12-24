@@ -74,7 +74,9 @@
         <div class="signup-footer center">
           <p class="text">
             {{ $t("alreadyHaveAccount") }}
-            <router-link :to="{ name: 'Login' }">{{ $t("login") }}</router-link>
+            <router-link :to="{ name: 'AppLogin' }">{{
+              $t("login")
+            }}</router-link>
           </p>
         </div>
       </form>
@@ -114,7 +116,7 @@ export default {
         .then((response) => {
           console.log(response);
           this.$store.dispatch("loading", false);
-          this.$router.push({ name: "Login" });
+          this.$router.push({ name: "AppLogin" });
         })
         .catch((error) => {
           console.log(error);

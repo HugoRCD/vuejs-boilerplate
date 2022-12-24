@@ -62,7 +62,7 @@
           <ProfilTool v-if="isLogged" />
           <div v-else class="hidden tablet:flex gap-2">
             <router-link
-              :to="{ name: 'Login' }"
+              :to="{ name: 'AppLogin' }"
               class="text-base hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >
               Login
@@ -99,7 +99,7 @@
         v-if="!isLogged"
       >
         <router-link
-          :to="{ name: 'Login' }"
+          :to="{ name: 'AppLogin' }"
           class="text-base hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
         >
           Login

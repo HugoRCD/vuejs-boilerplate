@@ -18,6 +18,7 @@ import ForgotPassword from "@/views/auth/ForgotPassword.vue";
 import ResetPassword from "@/views/auth/ResetPassword.vue";
 
 import Application from "@/views/application/Application.vue";
+import AppLogin from "@/views/application/AppLogin.vue";
 import Dashboard from "@/views/application/Dashboard.vue";
 
 import error404 from "@/views/error404.vue";
@@ -74,6 +75,11 @@ const routes = [
     path: "/app",
     component: Application,
     children: [
+      {
+        path: "login",
+        name: "AppLogin",
+        component: AppLogin,
+      },
       {
         path: "dashboard",
         name: "Dashboard",

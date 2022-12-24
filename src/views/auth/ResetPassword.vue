@@ -71,7 +71,7 @@ export default {
         })
         .then(() => {
           this.$store.dispatch("loading", false);
-          this.$router.push({ name: "Login" });
+          this.$router.push({ name: "AppLogin" });
         })
         .catch(() => {
           this.$store.dispatch("loading", false);

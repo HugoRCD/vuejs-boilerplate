@@ -83,7 +83,7 @@ export default {
         .then(() => {
           this.$store.dispatch("loading", false);
           this.$store.dispatch("logout");
-          this.$router.push({ name: "Login" });
+          this.$router.push({ name: "AppLogin" });
         })
         .catch((error) => {
           this.$store.dispatch("loading", false);
