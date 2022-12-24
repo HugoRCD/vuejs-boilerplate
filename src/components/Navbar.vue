@@ -1,7 +1,7 @@
 <template>
   <Disclosure
     as="nav"
-    class="bg-secondary fixed top-0 w-full z-10"
+    class="bg-primary fixed top-0 w-full z-10 border-b border-gray-200 border-opacity-25"
     v-slot="{ open }"
   >
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -40,7 +40,7 @@
                 class="text-base hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 :class="[
                   item.name === $route.name
-                    ? 'bg-gray-900 text-inverted'
+                    ? 'bg-accent-faded text-accent'
                     : 'text-base hover:bg-gray-700 hover:text-white',
                   'px-3 py-2 rounded-md text-sm font-medium',
                 ]"
@@ -52,12 +52,15 @@
           </div>
         </div>
         <div
-          class="absolute gap-4 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+          class="absolute gap-5 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
         >
           <ThemeSwitcher />
           <LanguageSelector />
+          <div
+            class="hidden tablet:block h-6 w-px bg-accent-faded border-l border-gray-200 border-opacity-25"
+          ></div>
           <ProfilTool v-if="isLogged" />
-          <div v-else class="hidden tablet:block">
+          <div v-else class="hidden tablet:flex gap-2">
             <router-link
               :to="{ name: 'Login' }"
               class="text-base hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
@@ -82,7 +85,7 @@
           :key="item.name"
           :class="[
             item.name === $route.name
-              ? 'bg-gray-900 text-white'
+              ? 'bg-accent-faded text-accent'
               : 'text-gray-300 hover:bg-gray-700 hover:text-white',
             'block px-3 py-2 rounded-md text-base font-medium',
           ]"

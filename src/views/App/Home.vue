@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-base">
+  <div>
     <main>
       <!-- Hero section -->
       <div class="overflow-hidden pt-8 sm:pt-12 lg:relative lg:py-48">

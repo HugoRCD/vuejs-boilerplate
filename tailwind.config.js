@@ -58,17 +58,22 @@ module.exports = {
         "accent-hover": withOpacity("--accent-color-hover"),
       },
       backgroundColor: {
-        base: "var(--bg-primary)",
+        primary: "var(--bg-primary)",
         secondary: "var(--bg-secondary)",
         accent: withOpacity("--accent-color"),
         "accent-hover": withOpacity("--accent-color-hover"),
         "accent-faded": "var(--accent-color-faded)",
+        transparent: "transparent",
       },
       ringColor: {
         accent: withOpacity("--accent-color"),
+        "accent-faded": "var(--accent-color-faded)",
+        transparent: "transparent",
       },
       borderColor: {
         accent: withOpacity("--accent-color"),
+        "accent-faded": "var(--accent-color-faded)",
+        transparent: "transparent",
       },
       screens: {
         mobile: "320px",
