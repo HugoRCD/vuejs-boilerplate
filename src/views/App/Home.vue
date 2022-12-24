@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white">
+  <div class="bg-base">
     <main>
       <!-- Hero section -->
       <div class="overflow-hidden pt-8 sm:pt-12 lg:relative lg:py-48">
@@ -10,7 +10,7 @@
             <div>
               <img
                 class="h-11 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=rose&shade=500"
+                src="../../assets/media/logo.png"
                 alt="Your Company"
               />
             </div>
@@ -18,11 +18,11 @@
               <div>
                 <a href="#" class="inline-flex space-x-4">
                   <span
-                    class="rounded bg-rose-50 px-2.5 py-1 text-sm font-semibold text-rose-500"
+                    class="rounded bg-accent-faded px-2.5 py-1 text-sm font-semibold text-accent"
                     >What's new</span
                   >
                   <span
-                    class="inline-flex items-center space-x-1 text-sm font-medium text-rose-500"
+                    class="inline-flex items-center space-x-1 text-sm font-medium text-accent"
                   >
                     <span>Just shipped version 0.1.0</span>
                   </span>
@@ -30,11 +30,11 @@
               </div>
               <div class="mt-6 sm:max-w-xl">
                 <h1
-                  class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
+                  class="text-4xl font-bold tracking-tight text-base sm:text-5xl"
                 >
-                  Issue management for growing teams
+                  A better way to create your next project.
                 </h1>
-                <p class="mt-6 text-xl text-gray-500">
+                <p class="mt-6 text-xl text-muted">
                   Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
                   qui lorem cupidatat commodo.
                 </p>
@@ -45,14 +45,14 @@
                   <input
                     id="hero-email"
                     type="email"
-                    class="block w-full rounded-md border border-gray-300 px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-rose-500 focus:ring-rose-500"
+                    class="block w-full rounded-md border border-gray-300 px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-accent focus:ring-accent"
                     placeholder="Enter your email"
                   />
                 </div>
                 <div class="mt-4 sm:mt-0 sm:ml-3">
                   <button
                     type="submit"
-                    class="block w-full rounded-md border border-transparent bg-rose-500 px-5 py-3 text-base font-medium text-white shadow hover:bg-rose-600 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 sm:px-10"
+                    class="block w-full rounded-md border border-transparent bg-accent px-5 py-3 text-inverted font-medium shadow hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 sm:px-10"
                   >
                     Notify me
                   </button>
@@ -64,11 +64,9 @@
                   <div
                     class="min-w-0 flex-1 py-1 pl-5 text-sm text-gray-500 sm:py-3"
                   >
-                    <span class="font-medium text-gray-900">Rated 5 stars</span>
-                    by over
-                    <span class="font-medium text-rose-500"
-                      >500 beta users</span
-                    >
+                    <span class="font-medium text-base">Rated 5 stars</span>
+                    <span class="mx-1.5 text-muted">by over</span>
+                    <span class="font-medium text-accent">500 beta users</span>
                   </div>
                 </div>
               </div>
@@ -82,7 +80,7 @@
           >
             <div class="hidden sm:block">
               <div
-                class="absolute inset-y-0 left-1/2 w-screen rounded-l-3xl bg-gray-50 lg:left-80 lg:right-0 lg:w-full"
+                class="absolute inset-y-0 left-1/2 w-screen rounded-l-3xl bg-secondary lg:left-80 lg:right-0 lg:w-full"
               />
               <svg
                 class="absolute top-8 right-1/2 -mr-3 lg:left-0 lg:m-0"
@@ -129,171 +127,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Testimonial/stats section -->
-      <div class="relative mt-20">
-        <div
-          class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8"
-        >
-          <div class="relative sm:py-16 lg:py-0">
-            <div
-              aria-hidden="true"
-              class="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen"
-            >
-              <div
-                class="absolute inset-y-0 right-1/2 w-full rounded-r-3xl bg-gray-50 lg:right-72"
-              />
-              <svg
-                class="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12"
-                width="404"
-                height="392"
-                fill="none"
-                viewBox="0 0 404 392"
-              >
-                <defs>
-                  <pattern
-                    id="02f20b47-fd69-4224-a62a-4c9de5c763f7"
-                    x="0"
-                    y="0"
-                    width="20"
-                    height="20"
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <rect
-                      x="0"
-                      y="0"
-                      width="4"
-                      height="4"
-                      class="text-gray-200"
-                      fill="currentColor"
-                    />
-                  </pattern>
-                </defs>
-                <rect
-                  width="404"
-                  height="392"
-                  fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)"
-                />
-              </svg>
-            </div>
-            <div
-              class="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-none lg:px-0 lg:py-20"
-            >
-              <!-- Testimonial card-->
-              <div
-                class="relative overflow-hidden rounded-2xl pt-64 pb-10 shadow-xl"
-              >
-                <img
-                  class="absolute inset-0 h-full w-full object-cover"
-                  src="https://images.unsplash.com/photo-1521510895919-46920266ddb3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&fp-x=0.5&fp-y=0.6&fp-z=3&width=1440&height=1440&sat=-100"
-                  alt=""
-                />
-                <div class="absolute inset-0 bg-rose-500 mix-blend-multiply" />
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-rose-600 via-rose-600 opacity-90"
-                />
-                <div class="relative px-8">
-                  <div>
-                    <img
-                      class="h-12"
-                      src="https://tailwindui.com/img/logos/workcation.svg?color=white"
-                      alt="Workcation"
-                    />
-                  </div>
-                  <blockquote class="mt-8">
-                    <div
-                      class="relative text-lg font-medium text-white md:flex-grow"
-                    >
-                      <svg
-                        class="absolute top-0 left-0 h-8 w-8 -translate-x-3 -translate-y-2 transform text-rose-400"
-                        fill="currentColor"
-                        viewBox="0 0 32 32"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"
-                        />
-                      </svg>
-                      <p class="relative">
-                        Tincidunt integer commodo, cursus etiam aliquam neque,
-                        et. Consectetur pretium in volutpat, diam. Montes, magna
-                        cursus nulla feugiat dignissim id lobortis amet.
-                      </p>
-                    </div>
-
-                    <footer class="mt-4">
-                      <p class="text-base font-semibold text-rose-200">
-                        Sarah Williams, CEO at Workcation
-                      </p>
-                    </footer>
-                  </blockquote>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0"
-          >
-            <!-- Content area -->
-            <div class="pt-12 sm:pt-16 lg:pt-20">
-              <h2
-                class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
-              >
-                On a mission to empower teams
-              </h2>
-              <div class="mt-6 space-y-6 text-gray-500">
-                <p class="text-lg">
-                  Sagittis scelerisque nulla cursus in enim consectetur quam.
-                  Dictum urna sed consectetur neque tristique pellentesque.
-                  Blandit amet, sed aenean erat arcu morbi. Cursus faucibus nunc
-                  nisl netus morbi vel porttitor vitae ut. Amet vitae fames
-                  senectus vitae.
-                </p>
-                <p class="text-base leading-7">
-                  Sollicitudin tristique eros erat odio sed vitae, consequat
-                  turpis elementum. Lorem nibh vel, eget pretium arcu vitae.
-                  Eros eu viverra donec ut volutpat donec laoreet quam urna.
-                  Sollicitudin tristique eros erat odio sed vitae, consequat
-                  turpis elementum. Lorem nibh vel, eget pretium arcu vitae.
-                  Eros eu viverra donec ut volutpat donec laoreet quam urna.
-                </p>
-                <p class="text-base leading-7">
-                  Rhoncus nisl, libero egestas diam fermentum dui. At quis
-                  tincidunt vel ultricies. Vulputate aliquet velit faucibus
-                  semper. Pellentesque in venenatis vestibulum consectetur nibh
-                  id. In id ut tempus egestas. Enim sit aliquam nec, a. Morbi
-                  enim fermentum lacus in. Viverra.
-                </p>
-              </div>
-            </div>
-
-            <!-- Stats section -->
-            <div class="mt-10">
-              <dl class="grid grid-cols-2 gap-x-4 gap-y-8">
-                <div
-                  v-for="stat in stats"
-                  :key="stat.label"
-                  class="border-t-2 border-gray-100 pt-6"
-                >
-                  <dt class="text-base font-medium text-gray-500">
-                    {{ stat.label }}
-                  </dt>
-                  <dd class="text-3xl font-bold tracking-tight text-gray-900">
-                    {{ stat.value }}
-                  </dd>
-                </div>
-              </dl>
-              <div class="mt-10">
-                <a href="#" class="text-base font-medium text-rose-500"
-                  >Learn more about how we're changing the world&nbsp&rarr;</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- Logo cloud section -->
       <div class="mt-32">
         <div
@@ -302,11 +135,11 @@
           <div class="lg:grid lg:grid-cols-2 lg:items-center lg:gap-24">
             <div>
               <h2
-                class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+                class="text-3xl font-bold tracking-tight text-base sm:text-4xl"
               >
                 Backed by world-renowned investors
               </h2>
-              <p class="mt-6 max-w-3xl text-lg leading-7 text-gray-500">
+              <p class="mt-6 max-w-3xl text-lg leading-7 text-muted">
                 Sagittis scelerisque nulla cursus in enim consectetur quam.
                 Dictum urna sed consectetur neque tristique pellentesque.
                 Blandit amet, sed aenean erat arcu morbi. Cursus faucibus nunc
@@ -314,8 +147,8 @@
                 senectus vitae.
               </p>
               <div class="mt-6">
-                <a href="#" class="text-base font-medium text-rose-500"
-                  >Meet our investors and advisors&nbsp&rarr;</a
+                <a href="#" class="font-medium text-accent"
+                  >Meet our investors and advisors</a
                 >
               </div>
             </div>
@@ -338,7 +171,7 @@
       <div class="relative mt-24 sm:mt-32 sm:py-16">
         <div aria-hidden="true" class="hidden sm:block">
           <div
-            class="absolute inset-y-0 left-0 w-1/2 rounded-r-3xl bg-gray-50"
+            class="absolute inset-y-0 left-0 w-1/2 rounded-r-3xl bg-secondary"
           />
           <svg
             class="absolute top-8 left-1/2 -ml-3"
@@ -377,7 +210,7 @@
           class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8"
         >
           <div
-            class="relative overflow-hidden rounded-2xl bg-rose-500 px-6 py-10 shadow-xl sm:px-12 sm:py-20"
+            class="relative overflow-hidden rounded-2xl bg-accent px-6 py-10 shadow-xl sm:px-12 sm:py-20"
           >
             <div
               aria-hidden="true"
@@ -391,12 +224,12 @@
                 viewBox="0 0 1463 360"
               >
                 <path
-                  class="text-rose-400 text-opacity-40"
+                  class="text-accent-hover text-opacity-40"
                   fill="currentColor"
                   d="M-82.673 72l1761.849 472.086-134.327 501.315-1761.85-472.086z"
                 />
                 <path
-                  class="text-rose-600 text-opacity-40"
+                  class="text-accent-hover text-opacity-40"
                   fill="currentColor"
                   d="M-217.088 544.086L1544.761 72l134.327 501.316-1761.849 472.086z"
                 />
@@ -405,11 +238,11 @@
             <div class="relative">
               <div class="sm:text-center">
                 <h2
-                  class="text-3xl font-bold tracking-tight text-white sm:text-4xl"
+                  class="text-3xl font-bold tracking-tight text-inverted sm:text-4xl"
                 >
                   Get notified when we&rsquo;re launching.
                 </h2>
-                <p class="mx-auto mt-6 max-w-2xl text-lg text-rose-100">
+                <p class="mx-auto mt-6 max-w-2xl text-lg text-inverted">
                   Sagittis scelerisque nulla cursus in enim consectetur quam.
                   Dictum urna sed consectetur neque tristique pellentesque.
                 </p>
@@ -427,7 +260,7 @@
                 <div class="mt-4 sm:mt-0 sm:ml-3">
                   <button
                     type="submit"
-                    class="block w-full rounded-md border border-transparent bg-gray-900 px-5 py-3 text-base font-medium text-white shadow hover:bg-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-rose-500 sm:px-10"
+                    class="block w-full rounded-md border border-transparent bg-gray-900 px-5 py-3 text-inverted font-medium shadow hover:bg-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-rose-500 sm:px-10"
                   >
                     Notify me
                   </button>
@@ -472,7 +305,7 @@
           </a>
         </div>
         <p class="mt-8 text-center text-base text-gray-400">
-          &copy; 2020 Your Company, Inc. All rights reserved.
+          &copy; 2022 Vue Template, Inc. All rights reserved.
         </p>
       </div>
     </footer>
@@ -530,10 +363,9 @@ export default {
       footerNavigation: {
         main: [
           { name: "About", href: "#" },
-          { name: "Blog", href: "#" },
-          { name: "Jobs", href: "#" },
-          { name: "Press", href: "#" },
-          { name: "Partners", href: "#" },
+          { name: "Contact", href: "#" },
+          { name: "Terms", href: "#" },
+          { name: "Privacy", href: "#" },
         ],
         social: [
           { name: "Twitter", href: "#", icon: "" },

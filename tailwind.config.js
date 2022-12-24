@@ -1,12 +1,4 @@
-/*function withOpacity(variableName) {
-  return ({ opacityValue }) => {
-    if (opacityValue !== undefined) {
-      return `rgba(var(${variableName}), ${opacityValue})`;
-    }
-    return `rgb(var(${variableName}))`;
-  };
-}
-
+/*
 textColor: {
   skin: {
     base: "var(--text-color-base)",
@@ -45,12 +37,41 @@ boxShadow: {
     l: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
 },*/
 
+function withOpacity(variableName) {
+  return ({ opacityValue }) => {
+    if (opacityValue !== undefined) {
+      return `rgba(var(${variableName}), ${opacityValue})`;
+    }
+    return `rgb(var(${variableName}))`;
+  };
+}
+
 const colors = require("tailwindcss/colors");
 
 module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      textColor: {
+        base: "var(--font-base)",
+        muted: "var(--font-muted)",
+        inverted: "var(--font-inverted)",
+        accent: withOpacity("--accent-color"),
+        "accent-hover": withOpacity("--accent-color-hover"),
+      },
+      backgroundColor: {
+        base: "var(--bg-primary)",
+        secondary: "var(--bg-secondary)",
+        accent: withOpacity("--accent-color"),
+        "accent-hover": withOpacity("--accent-color-hover"),
+        "accent-faded": "var(--accent-color-faded)",
+      },
+      ringColor: {
+        accent: withOpacity("--accent-color"),
+      },
+      borderColor: {
+        accent: withOpacity("--accent-color"),
+      },
       colors: {
         rose: colors.rose,
       },

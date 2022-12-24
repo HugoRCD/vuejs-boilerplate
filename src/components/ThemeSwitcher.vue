@@ -1,7 +1,7 @@
 <template>
   <div class="theme-switcher" @click="changeTheme">
-    <i v-if="theme === 'light'" class="fa-sharp fa-solid fa-moon fa-lg"></i>
-    <i v-else class="fa-sharp fa-solid fa-sun fa-lg"></i>
+    <i v-if="theme === 'light'" class="fa-regular fa-solid fa-moon fa-sm"></i>
+    <i v-else class="fa-regular fa-solid fa-sun fa-sm"></i>
   </div>
 </template>
 
@@ -20,9 +20,11 @@ export default {
     changeTheme() {
       if (document.documentElement.getAttribute("data-theme") === "dark") {
         document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "light");
         this.theme = "light";
       } else {
         document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
         this.theme = "dark";
       }
     },

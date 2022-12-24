@@ -25,24 +25,6 @@
 @import "input";
 @import "font";
 
-:root {
-  --font-xs: 0.75rem;
-  --font-sm: 0.875rem;
-  --font-base: 1rem;
-  --font-lg: 1.125rem;
-  --font-xl: 1.25rem;
-  --font-xxl: 2rem;
-  --font-bold: 600;
-
-  --btn-padding: 0.35rem 1rem;
-  --btn-radius: 0.25rem;
-  --btn-color: #ffffff;
-  --btn-primary-bg: var(--accent);
-  --btn-primary-bg-hover: var(--accent-hover);
-  --btn-secondary-bg: #111827;
-  --btn-secondary-bg-hover: #0d131e;
-}
-
 .pointer {
   cursor: pointer;
 }
