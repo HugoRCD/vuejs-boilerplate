@@ -56,9 +56,12 @@
                 <div
                   class="min-w-0 flex-1 py-1 pl-5 text-sm text-gray-500 sm:py-3"
                 >
-                  <span class="font-medium text-base">Rated 5 stars</span>
+                  <span>
+                    <i v-for="n in 5" :key="n" class="fas fa-star mr-1"></i>
+                  </span>
+                  <span class="ml-2 font-medium text-base">Rated 5 stars</span>
                   <span class="mx-1.5 text-muted">by over</span>
-                  <span class="font-medium text-accent">500 beta users</span>
+                  <span class="font-medium text-accent">100 beta users</span>
                 </div>
               </div>
             </div>
