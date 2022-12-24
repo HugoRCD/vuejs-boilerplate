@@ -88,7 +88,7 @@ import { GoogleLogin } from "vue3-google-login";
 import Loader from "@/components/Loader.vue";
 
 export default {
-  name: "Signup",
+  name: "Register",
   components: { Loader, GoogleLogin },
   data() {
     return {

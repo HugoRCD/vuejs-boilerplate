@@ -1,27 +1,31 @@
 import { createRouter, createWebHistory } from "vue-router";
-import App from "@/views/App/App.vue";
-import Home from "@/views/App/Home.vue";
-import About from "@/views/App/About.vue";
-import Contact from "@/views/App/Contact.vue";
+
+import LandingPage from "@/views/landing-page/LandingPage.vue";
+import Home from "@/views/landing-page/Home.vue";
+import About from "@/views/landing-page/About.vue";
+import Contact from "@/views/landing-page/Contact.vue";
+
+import Auth from "@/views/auth/Auth.vue";
+import Login from "@/views/auth/Login.vue";
+import Register from "@/views/auth/Register.vue";
+
+import Account from "@/views/account/Account.vue";
+import Profile from "@/views/account/Profile.vue";
+import Settings from "@/views/account/Settings.vue";
+
+import VerifyEmail from "@/views/auth/VerifyEmail.vue";
+import ForgotPassword from "@/views/auth/ForgotPassword.vue";
+import ResetPassword from "@/views/auth/ResetPassword.vue";
+
+import Application from "@/views/application/Application.vue";
+import Dashboard from "@/views/application/Dashboard.vue";
+
 import error404 from "@/views/error404.vue";
-import Dashboard from "@/views/App/Dashboard.vue";
-
-import Auth from "@/views/Auth/Auth.vue";
-import Login from "@/views/Auth/Login.vue";
-import Signup from "@/views/Auth/Signup.vue";
-
-import Account from "@/views/Account/Account.vue";
-import Profile from "@/views/Account/Profile.vue";
-import Settings from "@/views/Account/Settings.vue";
-
-import VerifyEmail from "@/views/Auth/VerifyEmail.vue";
-import ForgotPassword from "@/views/Auth/ForgotPassword.vue";
-import ResetPassword from "@/views/Auth/ResetPassword.vue";
 
 const routes = [
   {
     path: "/",
-    component: App,
+    component: LandingPage,
     children: [
       {
         path: "",
@@ -38,19 +42,6 @@ const routes = [
         name: "Contact",
         component: Contact,
       },
-      {
-        path: "/login",
-        name: "Login",
-        component: Login,
-      },
-      {
-        path: "/dashboard",
-        name: "Dashboard",
-        component: Dashboard,
-        meta: {
-          requiresAuth: true,
-        },
-      },
     ],
   },
   {
@@ -58,9 +49,9 @@ const routes = [
     component: Auth,
     children: [
       {
-        path: "signup",
-        name: "Signup",
-        component: Signup,
+        path: "register",
+        name: "Register",
+        component: Register,
       },
       {
         path: "login",
@@ -78,6 +69,20 @@ const routes = [
         component: ResetPassword,
       },
     ],
+  },
+  {
+    path: "/app",
+    component: Application,
+    children: [
+      {
+        path: "dashboard",
+        name: "Dashboard",
+        component: Dashboard,
+      },
+    ],
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: "/account",

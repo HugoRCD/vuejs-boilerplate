@@ -1,18 +1,16 @@
 <template>
   <CommandConsole />
-  <Navbar />
-  <router-view class="mt-10" />
+  <router-view />
   <EnvChecker />
 </template>
 
 <script>
 import EnvChecker from "@/components/EnvChecker.vue";
 import CommandConsole from "@/components/commandConsole.vue";
-import Navbar from "@/components/Navbar.vue";
 
 export default {
   name: "App",
-  components: { Navbar, CommandConsole, EnvChecker },
+  components: { CommandConsole, EnvChecker },
   created() {
     if (localStorage.getItem("accessToken")) {
       this.$store.dispatch(

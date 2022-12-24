@@ -44,9 +44,9 @@
         <div class="login-footer center">
           <p class="text">
             {{ $t("noAccount") }}
-            <router-link :to="{ name: 'Signup' }">{{
-              $t("signup")
-            }}</router-link>
+            <router-link :to="{ name: 'Register' }">
+              {{ $t("signup") }}
+            </router-link>
           </p>
         </div>
       </form>

@@ -1,7 +1,7 @@
 <template>
   <Disclosure
     as="nav"
-    class="bg-primary fixed top-0 w-full z-10 border-b border-gray-200 border-opacity-25"
+    class="bg-primary sticky top-0 z-10 border-b border-gray-200 border-opacity-25"
     v-slot="{ open }"
   >
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -68,7 +68,7 @@
               Login
             </router-link>
             <router-link
-              :to="{ name: 'Signup' }"
+              :to="{ name: 'Register' }"
               class="text-inverted bg-accent hover:bg-accent-hover px-3 py-2 rounded-md text-sm font-medium"
             >
               Signup
@@ -105,7 +105,7 @@
           Login
         </router-link>
         <router-link
-          :to="{ name: 'Signup' }"
+          :to="{ name: 'Register' }"
           class="text-inverted bg-accent hover:bg-accent-hover px-3 py-2 rounded-md text-sm font-medium"
         >
           Signup
@@ -146,5 +146,3 @@ export default {
   },
 };
 </script>
-
-<style scoped lang="scss"></style>
