@@ -5,8 +5,11 @@ body {
   color: #ffffff;
   margin: 0;
   padding: 0;
-
-  @apply font-inter;
+  input {
+    &:focus {
+      outline: none;
+    }
+  }
 
   img {
     width: 100%;

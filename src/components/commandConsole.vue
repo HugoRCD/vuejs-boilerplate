@@ -11,7 +11,7 @@
         leave-to="opacity-0"
       >
         <div
-          class="fixed inset-0 bg-tertiary bg-opacity-25 transition-opacity"
+          class="fixed inset-0 bg-gray-500 bg-opacity-25 transition-opacity"
         />
       </TransitionChild>
 
@@ -26,48 +26,115 @@
           leave-to="opacity-0 scale-95"
         >
           <DialogPanel
-            class="mx-auto max-w-xl transform rounded-xl bg-secondary p-2 shadow-2xl ring-1 ring-black ring-opacity-5 transition-all"
+            class="mx-auto max-w-2xl transform divide-y divide-gray-500 divide-opacity-10 overflow-hidden rounded-xl bg-white bg-opacity-80 shadow-2xl ring-1 ring-black ring-opacity-5 backdrop-blur backdrop-filter transition-all"
           >
             <Combobox @update:modelValue="onSelect">
-              <ComboboxInput
-                class="w-full rounded-md border-0 bg-base px-4 py-2.5 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm"
-                placeholder="Search..."
-                @change="query = $event.target.value"
-              />
-
+              <div class="relative">
+                <MagnifyingGlassIcon
+                  class="pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-gray-900 text-opacity-40"
+                  aria-hidden="true"
+                />
+                <ComboboxInput
+                  class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm"
+                  placeholder="Search..."
+                  @change="query = $event.target.value"
+                />
+              </div>
               <ComboboxOptions
-                v-if="filteredPeople.length > 0"
+                v-if="query === '' || filteredProjects.length > 0"
                 static
-                class="-mb-2 max-h-72 scroll-py-2 overflow-y-auto py-2 text-sm text-gray-800"
+                class="max-h-80 scroll-py-2 divide-y divide-gray-500 divide-opacity-10 overflow-y-auto"
               >
-                <ComboboxOption
-                  v-for="person in filteredPeople"
-                  :key="person.id"
-                  :value="person"
-                  as="template"
-                  v-slot="{ active }"
-                >
-                  <li
-                    :class="[
-                      'cursor-default select-none rounded-md px-4 py-2',
-                      active && 'bg-indigo-600 text-white',
-                    ]"
+                <li class="p-2">
+                  <h2
+                    v-if="query === ''"
+                    class="mt-4 mb-2 px-3 text-xs font-semibold text-gray-900"
                   >
-                    {{ person.name }}
-                  </li>
-                </ComboboxOption>
+                    Recent searches
+                  </h2>
+                  <ul class="text-sm text-gray-700">
+                    <ComboboxOption
+                      v-for="project in query === ''
+                        ? recent
+                        : filteredProjects"
+                      :key="project.id"
+                      :value="project"
+                      as="template"
+                      v-slot="{ active }"
+                    >
+                      <li
+                        :class="[
+                          'flex cursor-default select-none items-center rounded-md px-3 py-2',
+                          active && 'bg-gray-900 bg-opacity-5 text-gray-900',
+                        ]"
+                      >
+                        <FolderIcon
+                          :class="[
+                            'h-6 w-6 flex-none text-gray-900 text-opacity-40',
+                            active && 'text-opacity-100',
+                          ]"
+                          aria-hidden="true"
+                        />
+                        <span class="ml-3 flex-auto truncate">{{
+                          project.name
+                        }}</span>
+                        <span v-if="active" class="ml-3 flex-none text-gray-500"
+                          >Jump to...</span
+                        >
+                      </li>
+                    </ComboboxOption>
+                  </ul>
+                </li>
+                <li v-if="query === ''" class="p-2">
+                  <h2 class="sr-only">Quick actions</h2>
+                  <ul class="text-sm text-gray-700">
+                    <ComboboxOption
+                      v-for="action in quickActions"
+                      :key="action.shortcut"
+                      :value="action"
+                      as="template"
+                      v-slot="{ active }"
+                    >
+                      <li
+                        :class="[
+                          'flex cursor-default select-none items-center rounded-md px-3 py-2',
+                          active && 'bg-gray-900 bg-opacity-5 text-gray-900',
+                        ]"
+                      >
+                        <component
+                          :is="action.icon"
+                          :class="[
+                            'h-6 w-6 flex-none text-gray-900 text-opacity-40',
+                            active && 'text-opacity-100',
+                          ]"
+                          aria-hidden="true"
+                        />
+                        <span class="ml-3 flex-auto truncate">{{
+                          action.name
+                        }}</span>
+                        <span
+                          class="ml-3 flex-none text-xs font-semibold text-gray-500"
+                        >
+                          <kbd class="font-sans">⌘</kbd>
+                          <kbd class="font-sans">{{ action.shortcut }}</kbd>
+                        </span>
+                      </li>
+                    </ComboboxOption>
+                  </ul>
+                </li>
               </ComboboxOptions>
 
               <div
-                v-if="query !== '' && filteredPeople.length === 0"
-                class="py-14 px-4 text-center sm:px-14"
+                v-if="query !== '' && filteredProjects.length === 0"
+                class="py-14 px-6 text-center sm:px-14"
               >
-                <UsersIcon
-                  class="mx-auto h-6 w-6 text-gray-400"
+                <FolderIcon
+                  class="mx-auto h-6 w-6 text-gray-900 text-opacity-40"
                   aria-hidden="true"
                 />
                 <p class="mt-4 text-sm text-gray-900">
-                  No people found using that search term.
+                  We couldn't find any projects with that term. Please try
+                  again.
                 </p>
               </div>
             </Combobox>
@@ -79,7 +146,14 @@
 </template>
 
 <script>
-import { UsersIcon } from "@heroicons/vue/24/outline";
+import { MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
+import {
+  DocumentPlusIcon,
+  FolderIcon,
+  FolderPlusIcon,
+  HashtagIcon,
+  TagIcon,
+} from "@heroicons/vue/24/outline";
 import {
   Combobox,
   ComboboxInput,
@@ -91,12 +165,12 @@ import {
   TransitionRoot,
 } from "@headlessui/vue";
 
-function onSelect(person) {
-  window.location = person.url;
+function onSelect(item) {
+  window.location = item.url;
 }
 
 export default {
-  name: "command-console",
+  name: "CommandConsole",
   components: {
     Combobox,
     ComboboxInput,
@@ -106,50 +180,50 @@ export default {
     DialogPanel,
     TransitionChild,
     TransitionRoot,
-    UsersIcon,
+    MagnifyingGlassIcon,
+    DocumentPlusIcon,
+    FolderIcon,
+    FolderPlusIcon,
+    HashtagIcon,
+    TagIcon,
   },
   data() {
     return {
       open: false,
       query: "",
-      people: [
+      people: [{ id: 1, name: "Dries Vincent", url: "#" }],
+      projects: [{ id: 1, name: "Workflow Inc. / Website Redesign", url: "#" }],
+      recent: [{ id: 1, name: "Workflow Inc. / Website Redesign", url: "#" }],
+      quickActions: [
         {
-          id: 1,
-          name: "Wade Cooper",
+          name: "Add new file...",
+          icon: DocumentPlusIcon,
+          shortcut: "N",
           url: "#",
         },
         {
-          id: 2,
-          name: "Arlene Mccoy",
+          name: "Add new folder...",
+          icon: FolderPlusIcon,
+          shortcut: "F",
           url: "#",
         },
-        {
-          id: 3,
-          name: "Devon Webb",
-          url: "#",
-        },
-        {
-          id: 4,
-          name: "Tom Cook",
-          url: "#",
-        },
+        { name: "Add hashtag...", icon: HashtagIcon, shortcut: "H", url: "#" },
+        { name: "Add label...", icon: TagIcon, shortcut: "L", url: "#" },
       ],
       onSelect,
     };
   },
+  created() {
+    document.addEventListener("keydown", (event) => {
+      if (event.metaKey && event.key === "k") this.open = !this.open;
+    });
+  },
   computed: {
-    filteredPeople() {
-      return this.people.filter((person) =>
-        person.name.toLowerCase().includes(this.query.toLowerCase()),
+    filteredProjects() {
+      return this.projects.filter((project) =>
+        project.name.toLowerCase().includes(this.query.toLowerCase()),
       );
     },
-  },
-  created() {
-    window.addEventListener("keydown", (event) => {
-      if (event.metaKey && event.key === "k") {
-        this.open = !this.open;
-      }
-    });
   },
 };
 </script>

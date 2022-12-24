@@ -81,8 +81,8 @@ export default {
     login() {
       login(this.user);
     },
-    googleLogin(response) {
-      googleLogin(response);
+    async googleLogin(response) {
+      await googleLogin(response);
     },
   },
 };

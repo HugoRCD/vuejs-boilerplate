@@ -1,22 +1,18 @@
 <template>
+  <CommandConsole />
   <Navbar />
-  <div class="main-router">
-    <router-view v-slot="{ Component }">
-      <transition name="fade">
-        <component :is="Component" />
-      </transition>
-    </router-view>
-  </div>
+  <router-view />
   <EnvChecker />
 </template>
 
 <script>
 import EnvChecker from "@/components/EnvChecker.vue";
 import Navbar from "@/components/Navbar.vue";
+import CommandConsole from "@/components/commandConsole.vue";
 
 export default {
   name: "App",
-  components: { Navbar, EnvChecker },
+  components: { CommandConsole, Navbar, EnvChecker },
   created() {
     if (localStorage.getItem("accessToken")) {
       this.$store.dispatch(
