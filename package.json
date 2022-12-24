@@ -10,6 +10,8 @@
     "format": "prettier --write \"src/**/*.js\" \"src/**/*.vue\" "
   },
   "dependencies": {
+    "@headlessui/vue": "^1.7.7",
+    "@heroicons/vue": "^2.0.13",
     "axios": "^1.2.1",
     "express": "^4.18.2",
     "graphql": "^16.6.0",
@@ -24,6 +26,7 @@
   },
   "devDependencies": {
     "@intlify/vue-i18n-loader": "^4.2.0",
+    "@tailwindcss/forms": "^0.5.3",
     "@types/axios": "^0.14.0",
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
