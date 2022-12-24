@@ -1,234 +1,147 @@
 <template>
-  <div class="navbar fullwidth">
-    <Logo />
-    <div class="nav-container">
-      <div class="nav-link">
-        <router-link
-          v-for="link in nav"
-          :key="link.link"
-          :to="{ name: link.name }"
+  <Disclosure
+    as="nav"
+    class="bg-secondary fixed top-0 w-full z-10"
+    v-slot="{ open }"
+  >
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button-->
+          <DisclosureButton
+            class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white"
+          >
+            <span class="sr-only">Open main menu</span>
+            <Bars3Icon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
+            <XMarkIcon v-else class="block h-6 w-6" aria-hidden="true" />
+          </DisclosureButton>
+        </div>
+        <div
+          class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
         >
-          {{ $t(link.name.toLowerCase()) }}
-        </router-link>
-      </div>
-      <div class="nav-button" v-if="!isLogged">
-        <router-link :to="{ name: 'Login' }">
-          <button class="btn-secondary">{{ $t("login") }}</button>
-        </router-link>
-        <router-link :to="{ name: 'Signup' }">
-          <button class="btn-primary">{{ $t("signup") }}</button>
-        </router-link>
-        <ThemeSwitcher />
-        <LanguageSelector />
-      </div>
-      <div class="nav-button" v-else>
-        <ProfilTool />
-        <ThemeSwitcher />
-        <LanguageSelector />
-      </div>
-      <div v-if="!showMenu" class="burger-menu" @click="toggleMenu">
-        <i class="fa-sharp fa-solid fa-bars fa-xl"></i>
-      </div>
-      <div v-else class="burger-menu" @click="toggleMenu">
-        <i class="fa-sharp fa-solid fa-times fa-xl"></i>
+          <div class="flex flex-shrink-0 items-center">
+            <img
+              class="block h-8 w-auto lg:hidden"
+              src="../assets/media/logo.png"
+              alt="Your Company"
+            />
+            <img
+              class="hidden h-8 w-auto lg:block"
+              src="../assets/media/logo.png"
+              alt="Your Company"
+            />
+          </div>
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <router-link
+                v-for="item in navigation"
+                :to="{ name: item.name }"
+                :key="item.name"
+                class="text-base hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                :class="[
+                  item.name === $route.name
+                    ? 'bg-gray-900 text-inverted'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                  'px-3 py-2 rounded-md text-sm font-medium',
+                ]"
+                :aria-current="item.current ? 'page' : undefined"
+              >
+                {{ item.name }}
+              </router-link>
+            </div>
+          </div>
+        </div>
+        <div
+          class="absolute gap-4 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+        >
+          <ThemeSwitcher />
+          <LanguageSelector />
+          <ProfilTool v-if="isLogged" />
+          <div v-else class="hidden tablet:block">
+            <router-link
+              :to="{ name: 'Login' }"
+              class="text-base hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Login
+            </router-link>
+            <router-link
+              :to="{ name: 'Signup' }"
+              class="text-inverted bg-accent hover:bg-accent-hover px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Signup
+            </router-link>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="backdrop" v-if="showMenu"></div>
-  <div class="dropdown-menu" v-if="showMenu" v-click-outside="hide">
-    <div class="dropdown-link flex-column">
-      <router-link
-        v-for="link in nav"
-        :key="link.path"
-        :to="link.path"
-        @click="hide"
+    <DisclosurePanel class="sm:hidden">
+      <div class="space-y-1 px-2 pt-2 pb-3">
+        <router-link
+          v-for="item in navigation"
+          :to="{ name: item.name }"
+          :key="item.name"
+          :class="[
+            item.name === $route.name
+              ? 'bg-gray-900 text-white'
+              : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+            'block px-3 py-2 rounded-md text-base font-medium',
+          ]"
+          :aria-current="item.current ? 'page' : undefined"
+        >
+          {{ item.name }}
+        </router-link>
+      </div>
+      <div
+        class="py-5 border-t border-gray-700 items-center center"
+        v-if="!isLogged"
       >
-        {{ $t(link.name.toLowerCase()) }}
-      </router-link>
-    </div>
-    <div class="dropdown-button flex-row justify-center mb-lg" v-if="!isLogged">
-      <router-link :to="{ name: 'Login' }">
-        <button class="btn-secondary" @click="hide">{{ $t("login") }}</button>
-      </router-link>
-      <router-link :to="{ name: 'Signup' }">
-        <button class="btn-primary" @click="hide">{{ $t("signup") }}</button>
-      </router-link>
-    </div>
-    <div class="dropdown-button flex-row justify-center mb-lg" v-else>
-      <i class="fas fa-user-circle fa-xl"></i>
-    </div>
-    <div class="dropdown-button flex-row justify-center mb-lg">
-      <ThemeSwitcher />
-      <LanguageSelector />
-    </div>
-  </div>
+        <router-link
+          :to="{ name: 'Login' }"
+          class="text-base hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+        >
+          Login
+        </router-link>
+        <router-link
+          :to="{ name: 'Signup' }"
+          class="text-inverted bg-accent hover:bg-accent-hover px-3 py-2 rounded-md text-sm font-medium"
+        >
+          Signup
+        </router-link>
+      </div>
+    </DisclosurePanel>
+  </Disclosure>
 </template>
 
 <script>
-import ThemeSwitcher from "@/components/ThemeSwitcher";
+import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
+import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
+import ThemeSwitcher from "@/components/ThemeSwitcher.vue";
+import ProfilTool from "@/components/ProfilTool.vue";
 import LanguageSelector from "@/components/LanguageSelector.vue";
-import ProfilTool from "@/components/ProfilTool";
-import Logo from "@/components/Logo.vue";
 
 export default {
   name: "Navbar",
   components: {
-    Logo,
-    ThemeSwitcher,
     LanguageSelector,
     ProfilTool,
+    ThemeSwitcher,
+    Disclosure,
+    DisclosureButton,
+    DisclosurePanel,
+    Bars3Icon,
+    XMarkIcon,
   },
   data() {
     return {
-      showMenu: false,
-      nav: [],
-      navLinks: [
-        {
-          name: "Home",
-          path: "/",
-        },
-        {
-          name: "About",
-          path: "/about",
-        },
-        {
-          name: "Contact",
-          path: "/contact",
-        },
-      ],
-      navLinksLogged: [
-        {
-          name: "Home",
-          path: "/",
-        },
-        {
-          name: "About",
-          path: "/about",
-        },
-        {
-          name: "Contact",
-          path: "/contact",
-        },
-        {
-          name: "Dashboard",
-          path: "/dashboard",
-        },
-      ],
+      navigation: [{ name: "Home" }, { name: "About" }, { name: "Contact" }],
     };
-  },
-  created() {
-    this.nav = this.navLinks;
   },
   computed: {
     isLogged() {
-      if (this.$store.getters.isLoggedIn) this.nav = this.navLinksLogged;
-      else this.nav = this.navLinks;
       return this.$store.getters.isLoggedIn;
-    },
-    user() {
-      return this.$store.getters.user;
-    },
-  },
-  methods: {
-    toggleMenu() {
-      this.showMenu = !this.showMenu;
-    },
-    hide() {
-      this.showMenu = false;
     },
   },
 };
 </script>
 
-<style scoped lang="scss">
-.navbar {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: var(--bg-secondary);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-
-  .nav-container {
-    display: flex;
-    align-items: center;
-
-    .nav-link {
-      display: flex;
-      align-items: center;
-      margin-right: 2rem;
-
-      a {
-        font-size: 1rem;
-        font-weight: 500;
-        color: var(--font-color);
-        margin-right: 1rem;
-
-        &:hover {
-          color: var(--font-color-secondary);
-        }
-      }
-    }
-
-    .nav-button {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-
-      i {
-        cursor: pointer;
-      }
-    }
-
-    .burger-menu {
-      display: none;
-      cursor: pointer;
-    }
-  }
-
-  @media screen and (max-width: 768px) {
-    .nav-container {
-      .nav-link {
-        display: none;
-      }
-
-      .nav-button {
-        display: none;
-      }
-
-      .burger-menu {
-        display: flex;
-        align-items: center;
-      }
-    }
-  }
-}
-
-.dropdown-menu {
-  position: fixed;
-  top: 4rem;
-  left: 0;
-  width: 100%;
-  background-color: var(--bg-secondary);
-  z-index: 1000;
-
-  .dropdown-link {
-    padding: 1rem 0;
-
-    a {
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--font-color);
-      margin-bottom: 1rem;
-
-      &:hover {
-        color: var(--font-color-secondary);
-      }
-    }
-  }
-}
-</style>
+<style scoped lang="scss"></style>

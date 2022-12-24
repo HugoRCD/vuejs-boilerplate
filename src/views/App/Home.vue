@@ -6,68 +6,59 @@
         <div
           class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-24 lg:px-8"
         >
-          <div>
+          <div class="mt-10">
             <div>
-              <img
-                class="h-11 w-auto"
-                src="../../assets/media/logo.png"
-                alt="Your Company"
-              />
-            </div>
-            <div class="mt-20">
-              <div>
-                <a href="#" class="inline-flex space-x-4">
-                  <span
-                    class="rounded bg-accent-faded px-2.5 py-1 text-sm font-semibold text-accent"
-                    >What's new</span
-                  >
-                  <span
-                    class="inline-flex items-center space-x-1 text-sm font-medium text-accent"
-                  >
-                    <span>Just shipped version 0.1.0</span>
-                  </span>
-                </a>
-              </div>
-              <div class="mt-6 sm:max-w-xl">
-                <h1
-                  class="text-4xl font-bold tracking-tight text-base sm:text-5xl"
+              <div class="inline-flex space-x-4">
+                <span
+                  class="rounded bg-accent-faded px-2.5 py-1 text-sm font-semibold text-accent"
+                  >What's new</span
                 >
-                  A better way to create your next project.
-                </h1>
-                <p class="mt-6 text-xl text-muted">
-                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
-                  qui lorem cupidatat commodo.
-                </p>
+                <span
+                  class="inline-flex items-center space-x-1 text-sm font-medium text-accent"
+                >
+                  <span>Just dropped version 0.1.0</span>
+                </span>
               </div>
-              <form action="#" class="mt-12 sm:flex sm:w-full sm:max-w-lg">
-                <div class="min-w-0 flex-1">
-                  <label for="hero-email" class="sr-only">Email address</label>
-                  <input
-                    id="hero-email"
-                    type="email"
-                    class="block w-full rounded-md border border-gray-300 px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-accent focus:ring-accent"
-                    placeholder="Enter your email"
-                  />
-                </div>
-                <div class="mt-4 sm:mt-0 sm:ml-3">
-                  <button
-                    type="submit"
-                    class="block w-full rounded-md border border-transparent bg-accent px-5 py-3 text-inverted font-medium shadow hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 sm:px-10"
-                  >
-                    Notify me
-                  </button>
-                </div>
-              </form>
-              <div class="mt-6">
-                <div class="inline-flex items-center divide-x divide-gray-300">
-                  <div class="flex flex-shrink-0 pr-5"></div>
-                  <div
-                    class="min-w-0 flex-1 py-1 pl-5 text-sm text-gray-500 sm:py-3"
-                  >
-                    <span class="font-medium text-base">Rated 5 stars</span>
-                    <span class="mx-1.5 text-muted">by over</span>
-                    <span class="font-medium text-accent">500 beta users</span>
-                  </div>
+            </div>
+            <div class="mt-6 sm:max-w-xl">
+              <h1
+                class="text-4xl font-bold tracking-tight text-base sm:text-5xl"
+              >
+                A better way to create your next project.
+              </h1>
+              <p class="mt-6 text-xl text-muted">
+                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
+                lorem cupidatat commodo.
+              </p>
+            </div>
+            <form action="#" class="mt-12 sm:flex sm:w-full sm:max-w-lg">
+              <div class="min-w-0 flex-1">
+                <label for="hero-email" class="sr-only">Email address</label>
+                <input
+                  id="hero-email"
+                  type="email"
+                  class="block w-full rounded-md border border-gray-300 px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-accent focus:ring-accent"
+                  placeholder="Enter your email"
+                />
+              </div>
+              <div class="mt-4 sm:mt-0 sm:ml-3">
+                <button
+                  type="submit"
+                  class="block w-full rounded-md border border-transparent bg-accent px-5 py-3 text-inverted font-medium shadow hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 sm:px-10"
+                >
+                  Notify me
+                </button>
+              </div>
+            </form>
+            <div class="mt-6">
+              <div class="inline-flex items-center divide-x divide-gray-300">
+                <div class="flex flex-shrink-0 pr-5"></div>
+                <div
+                  class="min-w-0 flex-1 py-1 pl-5 text-sm text-gray-500 sm:py-3"
+                >
+                  <span class="font-medium text-base">Rated 5 stars</span>
+                  <span class="mx-1.5 text-muted">by over</span>
+                  <span class="font-medium text-accent">500 beta users</span>
                 </div>
               </div>
             </div>

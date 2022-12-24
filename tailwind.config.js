@@ -46,8 +46,6 @@ function withOpacity(variableName) {
   };
 }
 
-const colors = require("tailwindcss/colors");
-
 module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
@@ -72,8 +70,10 @@ module.exports = {
       borderColor: {
         accent: withOpacity("--accent-color"),
       },
-      colors: {
-        rose: colors.rose,
+      screens: {
+        mobile: "320px",
+        tablet: "960px",
+        desktop: "1280px",
       },
     },
   },

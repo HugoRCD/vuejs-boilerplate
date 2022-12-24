@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "LocaleSwitcher",
+  name: "LanguageSelector",
   data() {
     return {
       theme: "dark",
