@@ -54,7 +54,7 @@
               <div class="flex flex-shrink-0 items-center px-4">
                 <img
                   class="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                  src="../../assets/media/logo.png"
                   alt="Your Company"
                 />
               </div>
@@ -97,105 +97,52 @@
     <!-- Static sidebar for desktop -->
     <div class="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
-      <div
-        class="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-5"
-      >
+      <div class="flex flex-grow flex-col overflow-y-auto bg-base pt-5">
         <div class="flex flex-shrink-0 items-center px-4">
           <img
             class="h-8 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+            src="../../assets/media/logo.png"
             alt="Your Company"
           />
         </div>
         <div class="mt-5 flex flex-grow flex-col">
           <nav class="flex-1 space-y-1 px-2 pb-4">
-            <a
+            <router-link
               v-for="item in navigation"
+              :to="{ name: item.name }"
               :key="item.name"
-              :href="item.href"
               :class="[
-                item.current
-                  ? 'bg-gray-100 text-gray-900'
-                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
+                item.name === $route.name
+                  ? 'bg-accent-faded text-accent'
+                  : 'text-base hover:bg-gray-700 hover:text-white',
+                'block px-3 py-2 rounded-md text-base font-medium',
               ]"
+              :aria-current="item.current ? 'page' : undefined"
             >
-              <component
-                :is="item.icon"
-                :class="[
-                  item.current
-                    ? 'text-gray-500'
-                    : 'text-gray-400 group-hover:text-gray-500',
-                  'mr-3 flex-shrink-0 h-6 w-6',
-                ]"
-                aria-hidden="true"
-              />
               {{ item.name }}
-            </a>
+            </router-link>
           </nav>
         </div>
       </div>
     </div>
     <div class="flex flex-1 flex-col md:pl-64">
-      <div class="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-white shadow">
+      <div class="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-base shadow">
         <button
           type="button"
-          class="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
+          class="border-r border-gray-200 px-4 text-gray-500 md:hidden"
           @click="sidebarOpen = true"
         >
           <span class="sr-only">Open sidebar</span>
           <Bars3BottomLeftIcon class="h-6 w-6" aria-hidden="true" />
         </button>
-        <div class="flex flex-1 justify-between px-4">
-          <div class="flex flex-1">
-            <form class="flex w-full md:ml-0" action="#" method="GET">
-              <label for="search-field" class="sr-only">Search</label>
-              <div
-                class="relative w-full text-gray-400 focus-within:text-gray-600"
-              >
-                <div
-                  class="pointer-events-none absolute inset-y-0 left-0 flex items-center"
-                >
-                  <MagnifyingGlassIcon class="h-5 w-5" aria-hidden="true" />
-                </div>
-                <input
-                  id="search-field"
-                  class="block h-full w-full border-transparent py-2 pl-8 pr-3 text-gray-900 placeholder-gray-500 focus:border-transparent focus:placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm"
-                  placeholder="Search"
-                  type="search"
-                  name="search"
-                />
-              </div>
-            </form>
-          </div>
-          <div class="ml-4 flex items-center md:ml-6">
-            <button
-              type="button"
-              class="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-            >
-              <span class="sr-only">View notifications</span>
-              <BellIcon class="h-6 w-6" aria-hidden="true" />
-            </button>
-            <Tools />
-            <ProfilTool />
-          </div>
+        <div class="flex flex-1 justify-end items-center px-4">
+          <Tools />
+          <ProfilTool />
         </div>
       </div>
-      <main class="flex-1">
-        <div class="py-6">
-          <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
-            <h1 class="text-2xl font-semibold text-base">Dashboard</h1>
-          </div>
-          <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
-            <!-- Replace with your content -->
-            <div class="py-4">
-              <div
-                class="h-96 rounded-lg border-4 border-dashed border-gray-200"
-              />
-            </div>
-            <!-- /End replace -->
-          </div>
-        </div>
+      <main class="bg-gray-400">
+        <div class=""></div>
+        <!-- Replace with your content -->
       </main>
     </div>
   </div>
@@ -253,17 +200,9 @@ export default {
   data() {
     return {
       navigation: [
-        { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
-        { name: "Team", href: "#", icon: UsersIcon, current: false },
-        { name: "Projects", href: "#", icon: FolderIcon, current: false },
-        { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
-        { name: "Documents", href: "#", icon: InboxIcon, current: false },
-        { name: "Reports", href: "#", icon: ChartBarIcon, current: false },
-      ],
-      userNavigation: [
-        { name: "Your Profile", href: "#" },
-        { name: "Settings", href: "#" },
-        { name: "Sign out", href: "#" },
+        { name: "Profile" },
+        { name: "Dashboard" },
+        { name: "Settings" },
       ],
       sidebarOpen: true,
     };
