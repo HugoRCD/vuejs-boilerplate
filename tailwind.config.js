@@ -71,6 +71,7 @@ module.exports = {
         transparent: "transparent",
       },
       borderColor: {
+        muted: "var(--font-muted)",
         accent: withOpacity("--accent-color"),
         "accent-faded": "var(--accent-color-faded)",
         transparent: "transparent",

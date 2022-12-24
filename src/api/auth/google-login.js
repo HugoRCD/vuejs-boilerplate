@@ -16,7 +16,7 @@ export async function googleLogin(googleToken) {
     const accessToken = response.data.accessToken;
     store.dispatch("insertAccessToken", accessToken).then();
     store.dispatch("loading", false).then();
-    router.push({ name: "Profile" }).then();
+    router.push({ name: "Dashboard" }).then();
   } else {
     store.dispatch("loading", false).then();
   }

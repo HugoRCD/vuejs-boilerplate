@@ -54,8 +54,7 @@
         <div
           class="absolute gap-5 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
         >
-          <ThemeSwitcher />
-          <LanguageSelector />
+          <Tools />
           <div
             class="hidden tablet:block h-6 w-px bg-accent-faded border-l border-gray-200 border-opacity-25"
           ></div>
@@ -118,16 +117,14 @@
 <script>
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
-import ThemeSwitcher from "@/components/ThemeSwitcher.vue";
 import ProfilTool from "@/components/ProfilTool.vue";
-import LanguageSelector from "@/components/LanguageSelector.vue";
+import Tools from "@/components/Tools.vue";
 
 export default {
   name: "Navbar",
   components: {
-    LanguageSelector,
+    Tools,
     ProfilTool,
-    ThemeSwitcher,
     Disclosure,
     DisclosureButton,
     DisclosurePanel,
