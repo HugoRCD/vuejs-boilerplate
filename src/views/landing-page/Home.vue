@@ -16,7 +16,15 @@
                 <span
                   class="inline-flex items-center space-x-1 text-sm font-medium text-accent"
                 >
-                  <span>Just dropped version 0.1.0</span>
+                  <span class="mr-2">Just dropped version 0.1.0</span>
+                  <span class="relative flex h-3 w-3">
+                    <span
+                      class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"
+                    ></span>
+                    <span
+                      class="relative inline-flex rounded-full h-3 w-3 bg-accent"
+                    ></span>
+                  </span>
                 </span>
               </div>
             </div>
@@ -265,44 +273,6 @@
         </div>
       </div>
     </main>
-
-    <!-- Footer section -->
-    <footer class="mt-24 bg-gray-900 sm:mt-12">
-      <div
-        class="mx-auto max-w-md overflow-hidden py-12 px-4 sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8"
-      >
-        <nav
-          class="-mx-5 -my-2 flex flex-wrap justify-center"
-          aria-label="Footer"
-        >
-          <div
-            v-for="item in footerNavigation.main"
-            :key="item.name"
-            class="px-5 py-2"
-          >
-            <a
-              :href="item.href"
-              class="text-base text-gray-400 hover:text-gray-300"
-              >{{ item.name }}</a
-            >
-          </div>
-        </nav>
-        <div class="mt-8 flex justify-center space-x-6">
-          <a
-            v-for="item in footerNavigation.social"
-            :key="item.name"
-            :href="item.href"
-            class="text-gray-400 hover:text-gray-300"
-          >
-            <span class="sr-only">{{ item.name }}</span>
-            <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
-          </a>
-        </div>
-        <p class="mt-8 text-center text-base text-gray-400">
-          &copy; 2022 Vue Template, Inc. All rights reserved.
-        </p>
-      </div>
-    </footer>
   </div>
 </template>
 
