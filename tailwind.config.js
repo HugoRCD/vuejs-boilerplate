@@ -51,7 +51,7 @@ module.exports = {
   theme: {
     extend: {
       textColor: {
-        base: "var(--font-base)",
+        primary: "var(--font-base)",
         muted: "var(--font-muted)",
         inverted: "var(--font-inverted)",
         accent: withOpacity("--accent-color"),

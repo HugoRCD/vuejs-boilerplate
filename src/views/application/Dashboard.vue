@@ -68,7 +68,7 @@
                       item.current
                         ? 'bg-gray-100 text-gray-900'
                         : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                      'group flex items-center px-2 py-2 text-base font-medium rounded-md',
+                      'group flex items-center px-2 py-2 text-primary font-medium rounded-md',
                     ]"
                   >
                     <component
@@ -114,8 +114,8 @@
               :class="[
                 item.name === $route.name
                   ? 'bg-accent-faded text-accent'
-                  : 'text-base hover:bg-gray-700 hover:text-white',
-                'block px-3 py-2 rounded-md text-base font-medium',
+                  : 'text-primary hover:bg-gray-700 hover:text-white',
+                'block px-3 py-2 rounded-md text-primary font-medium',
               ]"
               :aria-current="item.current ? 'page' : undefined"
             >

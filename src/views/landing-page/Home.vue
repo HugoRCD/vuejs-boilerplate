@@ -30,7 +30,7 @@
             </div>
             <div class="mt-6 sm:max-w-xl">
               <h1
-                class="text-4xl font-bold tracking-tight text-base sm:text-5xl"
+                class="text-4xl font-bold tracking-tight text-primary sm:text-5xl"
               >
                 A better way to create your next project.
               </h1>
@@ -45,7 +45,7 @@
                 <input
                   id="hero-email"
                   type="email"
-                  class="block w-full rounded-md border border-gray-300 px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-accent focus:ring-accent"
+                  class="block w-full rounded-md border border-gray-300 px-5 py-3 text-primary text-gray-900 placeholder-gray-500 shadow-sm focus:border-accent focus:ring-accent"
                   placeholder="Enter your email"
                 />
               </div>
@@ -67,7 +67,9 @@
                   <span>
                     <i v-for="n in 5" :key="n" class="fas fa-star mr-1"></i>
                   </span>
-                  <span class="ml-2 font-medium text-base">Rated 5 stars</span>
+                  <span class="ml-2 font-medium text-primary"
+                    >Rated 5 stars</span
+                  >
                   <span class="mx-1.5 text-muted">by over</span>
                   <span class="font-medium text-accent">100 beta users</span>
                 </div>
@@ -137,7 +139,7 @@
           <div class="lg:grid lg:grid-cols-2 lg:items-center lg:gap-24">
             <div>
               <h2
-                class="text-3xl font-bold tracking-tight text-base sm:text-4xl"
+                class="text-3xl font-bold tracking-tight text-primary sm:text-4xl"
               >
                 Backed by world-renowned investors
               </h2>
@@ -255,7 +257,7 @@
                   <input
                     id="cta-email"
                     type="email"
-                    class="block w-full rounded-md border border-transparent px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-rose-500"
+                    class="block w-full rounded-md border border-transparent px-5 py-3 text-primary text-gray-900 placeholder-gray-500 shadow-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-rose-500"
                     placeholder="Enter your email"
                   />
                 </div>

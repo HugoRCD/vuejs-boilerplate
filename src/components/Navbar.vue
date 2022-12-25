@@ -37,11 +37,11 @@
                 v-for="item in navigation"
                 :to="{ name: item.name }"
                 :key="item.name"
-                class="text-base hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                class="text-primary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 :class="[
                   item.name === $route.name
                     ? 'bg-accent-faded text-accent'
-                    : 'text-base hover:bg-gray-700 hover:text-white',
+                    : 'text-primary hover:bg-gray-700 hover:text-white',
                   'px-3 py-2 rounded-md text-sm font-medium',
                 ]"
                 :aria-current="item.current ? 'page' : undefined"
@@ -62,7 +62,7 @@
           <div v-else class="hidden tablet:flex gap-2">
             <router-link
               :to="{ name: 'AppLogin' }"
-              class="text-base hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+              class="text-primary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >
               Login
             </router-link>
@@ -86,7 +86,7 @@
             item.name === $route.name
               ? 'bg-accent-faded text-accent'
               : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-            'block px-3 py-2 rounded-md text-base font-medium',
+            'block px-3 py-2 rounded-md text-primary font-medium',
           ]"
           :aria-current="item.current ? 'page' : undefined"
         >
@@ -99,7 +99,7 @@
       >
         <router-link
           :to="{ name: 'AppLogin' }"
-          class="text-base hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+          class="text-primary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
         >
           Login
         </router-link>

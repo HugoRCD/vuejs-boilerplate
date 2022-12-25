@@ -13,7 +13,7 @@
             />
           </router-link>
           <h2
-            class="text-center mt-6 text-3xl font-bold tracking-tight text-base"
+            class="text-center mt-6 text-3xl font-bold tracking-tight text-primary"
           >
             Sign in to your account
           </h2>
@@ -22,7 +22,7 @@
         <div class="mt-16">
           <form v-if="!loading" class="space-y-6" @submit.prevent="login">
             <div>
-              <label for="login" class="block text-sm font-medium text-base"
+              <label for="login" class="block text-sm font-medium text-primary"
                 >Login</label
               >
               <div class="mt-1">
@@ -33,12 +33,15 @@
                   autocomplete="email"
                   required=""
                   v-model="user.login"
-                  class="block w-full text-muted appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-accent focus:outline-none focus:ring-accent sm:text-sm"
+                  placeholder="John Doe"
+                  class="block w-full text-gray-900 appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-accent focus:outline-none focus:ring-accent sm:text-sm"
                 />
               </div>
             </div>
             <div class="space-y-1">
-              <label for="password" class="block text-sm font-medium text-base"
+              <label
+                for="password"
+                class="block text-sm font-medium text-primary"
                 >Password</label
               >
               <div class="mt-1">
@@ -49,7 +52,8 @@
                   autocomplete="current-password"
                   required=""
                   v-model="user.password"
-                  class="block w-full text-muted appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-accent focus:outline-none focus:ring-accent sm:text-sm"
+                  placeholder="123soleil"
+                  class="block w-full text-gray-900 appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-accent focus:outline-none focus:ring-accent sm:text-sm"
                 />
               </div>
             </div>
@@ -62,7 +66,7 @@
                   type="checkbox"
                   class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                 />
-                <label for="remember-me" class="ml-2 block text-sm text-base"
+                <label for="remember-me" class="ml-2 block text-sm text-primary"
                   >Remember me</label
                 >
               </div>

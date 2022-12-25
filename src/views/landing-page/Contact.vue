@@ -68,7 +68,7 @@
         />
       </svg>
       <div class="text-center">
-        <h2 class="text-3xl font-bold tracking-tight text-base sm:text-4xl">
+        <h2 class="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
           Contact sales
         </h2>
         <p class="mt-4 text-lg leading-6 text-muted">
@@ -83,7 +83,9 @@
           class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
         >
           <div>
-            <label for="first-name" class="block text-sm font-medium text-base"
+            <label
+              for="first-name"
+              class="block text-sm font-medium text-primary"
               >First name</label
             >
             <div class="mt-1">
@@ -98,7 +100,9 @@
             </div>
           </div>
           <div>
-            <label for="last-name" class="block text-sm font-medium text-base"
+            <label
+              for="last-name"
+              class="block text-sm font-medium text-primary"
               >Last name</label
             >
             <div class="mt-1">
@@ -113,7 +117,7 @@
             </div>
           </div>
           <div class="sm:col-span-2">
-            <label for="company" class="block text-sm font-medium text-base"
+            <label for="company" class="block text-sm font-medium text-primary"
               >Company</label
             >
             <div class="mt-1">
@@ -128,7 +132,7 @@
             </div>
           </div>
           <div class="sm:col-span-2">
-            <label for="email" class="block text-sm font-medium text-base"
+            <label for="email" class="block text-sm font-medium text-primary"
               >Email</label
             >
             <div class="mt-1">
@@ -145,34 +149,22 @@
           <div class="sm:col-span-2">
             <label
               for="phone-number"
-              class="block text-sm font-medium text-base"
+              class="block text-sm font-medium text-primary"
               >Phone Number</label
             >
-            <div class="relative mt-1 rounded-md shadow-sm">
-              <div class="absolute inset-y-0 left-0 flex items-center">
-                <label for="country" class="sr-only">Country</label>
-                <select
-                  id="country"
-                  name="country"
-                  class="h-full rounded-md border-transparent bg-transparent py-0 pl-4 pr-8 text-muted focus:border-indigo-500 focus:ring-indigo-500"
-                >
-                  <option>US</option>
-                  <option>CA</option>
-                  <option>EU</option>
-                </select>
-              </div>
+            <div class="mt-1">
               <input
                 type="text"
                 name="phone-number"
                 id="phone-number"
                 autocomplete="tel"
-                class="block w-full text-gray-900 rounded-md border-gray-300 py-3 px-4 pl-20 focus:border-indigo-500 focus:ring-indigo-500"
                 placeholder="+1 (555) 987-6543"
+                class="block w-full text-gray-900 rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
               />
             </div>
           </div>
           <div class="sm:col-span-2">
-            <label for="message" class="block text-sm font-medium text-base"
+            <label for="message" class="block text-sm font-medium text-primary"
               >Message</label
             >
             <div class="mt-1">
@@ -206,16 +198,16 @@
                 </Switch>
               </div>
               <div class="ml-3">
-                <p class="text-base text-muted">
+                <p class="text-primary text-muted">
                   By selecting this, you agree to the
                   {{ " " }}
-                  <a href="#" class="font-medium text-base underline"
+                  <a href="#" class="font-medium text-primary underline"
                     >Privacy Policy</a
                   >
                   {{ " " }}
                   and
                   {{ " " }}
-                  <a href="#" class="font-medium text-base underline"
+                  <a href="#" class="font-medium text-primary underline"
                     >Cookie Policy</a
                   >.
                 </p>
@@ -225,7 +217,7 @@
           <div class="sm:col-span-2">
             <button
               type="submit"
-              class="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-accent px-6 py-3 text-base font-medium text-inverted shadow-sm hover:bg-accent-hover focus:outline-none"
+              class="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-accent px-6 py-3 text-primary font-medium text-inverted shadow-sm hover:bg-accent-hover focus:outline-none"
             >
               Let's talk
             </button>
