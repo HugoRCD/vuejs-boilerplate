@@ -79,10 +79,10 @@
               </div>
 
               <div class="text-sm">
-                <a
-                  href="#"
+                <router-link
+                  :to="{ name: 'PasswordForgot' }"
                   class="font-medium text-accent hover:text-accent-hover"
-                  >Forgot your password?</a
+                  >Forgot your password?</router-link
                 >
               </div>
             </div>

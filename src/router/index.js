@@ -15,10 +15,11 @@ import Settings from "@/views/account/Settings.vue";
 
 import VerifyEmail from "@/views/auth/VerifyEmail.vue";
 import ForgotPassword from "@/views/auth/ForgotPassword.vue";
-import ResetPassword from "@/views/auth/ResetPassword.vue";
 
 import Application from "@/views/application/Application.vue";
 import AppLogin from "@/views/application/AppLogin.vue";
+import PasswordForgot from "@/views/application/PasswordForgot.vue";
+import ResetPassword from "@/views/application/ResetPassword.vue";
 import Dashboard from "@/views/application/Dashboard.vue";
 
 import error404 from "@/views/error404.vue";
@@ -64,11 +65,6 @@ const routes = [
         name: "ForgotPassword",
         component: ForgotPassword,
       },
-      {
-        path: "/reset-password/:token",
-        name: "ResetPassword",
-        component: ResetPassword,
-      },
     ],
   },
   {
@@ -79,6 +75,16 @@ const routes = [
         path: "login",
         name: "AppLogin",
         component: AppLogin,
+      },
+      {
+        path: "password-forgot",
+        name: "PasswordForgot",
+        component: PasswordForgot,
+      },
+      {
+        path: "reset-password/:token",
+        name: "ResetPassword",
+        component: ResetPassword,
       },
       {
         path: "dashboard",
