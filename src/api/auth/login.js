@@ -4,9 +4,7 @@ import axios from "@/plugins/axios";
 
 export async function login(user) {
   store.dispatch("loading", true).then();
-  const response = await axios.post("/auth/login", user, {
-    withCredentials: true,
-  });
+  const response = await axios.post("/auth/login", user);
   if (response.status === 200) {
     axios.defaults.headers.common["Authorization"] =
       "Bearer " + response.data.accessToken;

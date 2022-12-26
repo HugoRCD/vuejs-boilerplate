@@ -96,7 +96,7 @@
               </button>
             </div>
             <div class="text-center">
-              <GoogleLogin :callback="googleLogin" prompt />
+              <GoogleLogin :callback="googleLogin" />
             </div>
           </form>
           <Loader v-else />

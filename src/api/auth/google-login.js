@@ -5,11 +5,7 @@ import axios from "@/plugins/axios";
 export async function googleLogin(googleToken) {
   store.dispatch("loading", true).then();
   const token = googleToken.credential;
-  const response = await axios.post(
-    "/auth/google",
-    { token },
-    { withCredentials: true },
-  );
+  const response = await axios.post("/auth/google", { token });
   if (response.status === 200) {
     axios.defaults.headers.common["Authorization"] =
       "Bearer " + response.data.accessToken;
