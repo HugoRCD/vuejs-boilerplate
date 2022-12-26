@@ -1,6 +1,6 @@
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/96ef5ef23a4442c2bf73762f46e52749)](https://www.codacy.com/gh/HugoRCD/vuejs-boilerplate/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=HugoRCD/vuejs-boilerplate&amp;utm_campaign=Badge_Grade)
+<img src="./public/homescreen.webp" width="750" alt="">
 
-[![Homescreen](https://github.com/HugoRCD/vuejs-boilerplate/blob/master/public/homescreen.webp)]
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/96ef5ef23a4442c2bf73762f46e52749)](https://www.codacy.com/gh/HugoRCD/vuejs-boilerplate/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=HugoRCD/vuejs-boilerplate&amp;utm_campaign=Badge_Grade)
 
 # Introduction
 
