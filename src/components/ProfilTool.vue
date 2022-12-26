@@ -48,6 +48,7 @@
 
 <script>
 import { Menu, MenuButton, MenuItems } from "@headlessui/vue";
+import { logout } from "@/api/auth/logout";
 
 export default {
   name: "ProfilTool",
@@ -68,18 +69,7 @@ export default {
   },
   methods: {
     async logout() {
-      this.$store.dispatch("loading", true);
-      this.$http
-        .post("/auth/logout", {}, { withCredentials: true })
-        .then(() => {
-          this.$store.dispatch("loading", false);
-          this.$store.dispatch("logout");
-          this.$router.push({ name: "AppLogin" });
-        })
-        .catch((error) => {
-          this.$store.dispatch("loading", false);
-          console.log(error);
-        });
+      await logout();
     },
   },
 };
