@@ -1,4 +1,8 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/96ef5ef23a4442c2bf73762f46e52749)](https://www.codacy.com/gh/HugoRCD/vuejs-boilerplate/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=HugoRCD/vuejs-boilerplate&amp;utm_campaign=Badge_Grade)
+
+// add image in ./public/homescreen.webp
+[![Homescreen](./public/homescreen.webp)](
+
 # Introduction
 
 Here is a completely working VueJS Template ! This app is a single-page application built with VueJS and includes features such as OAuth authentication with Google, translation with I18n, and a dark and light theme and many more...
