@@ -1,25 +1,39 @@
 import { createI18n } from "vue-i18n";
+import messages from "@intlify/unplugin-vue-i18n/messages";
 
-function loadLocaleMessages() {
-  const locales = require.context(
-    "../locales",
-    true,
-    /[A-Za-z0-9-_,\s]+\.json$/i,
-  );
-  const messages = {};
-  locales.keys().forEach((key) => {
-    const matched = key.match(/([A-Za-z0-9-_]+)\./i);
-    if (matched && matched.length > 1) {
-      const locale = matched[1];
-      messages[locale] = locales(key).default;
+export const allLocales = ["en", "fr"];
+
+const i18n = createI18n({
+  legacy: false,
+  globalInjection: true,
+  locale: "en",
+  fallbackLocale: "en",
+  messages: messages,
+});
+
+export default i18n;
+
+export async function setLocale(locale) {
+  if (!i18n.global.availableLocales.includes(locale)) {
+    const messages = await loadLocale(locale);
+    if (messages === undefined) {
+      return;
     }
-  });
-  return messages;
+    i18n.global.setLocaleMessage(locale, messages);
+  }
+  i18n.global.locale.value = locale;
+  localStorage.setItem("locale", locale);
 }
 
-export default createI18n({
-  legacy: false,
-  locale: process.env.VUE_APP_I18N_LOCALE || "en",
-  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || "en",
-  messages: loadLocaleMessages(),
-});
+function loadLocale(locale) {
+  return fetch(`./locales/${locale}.json`)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error("Something went wrong!");
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}

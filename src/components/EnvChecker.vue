@@ -13,7 +13,7 @@ export default {
   name: "EnvChecker",
   data() {
     return {
-      env: process.env.VUE_APP_ENV,
+      env: import.meta.env.VITE_APP_ENV,
     };
   },
 };

@@ -7,6 +7,7 @@
 <script>
 import EnvChecker from "@/components/EnvChecker.vue";
 import CommandConsole from "@/components/commandConsole.vue";
+import { setLocale } from "./plugins/i18n";
 
 export default {
   name: "App",
@@ -23,6 +24,11 @@ export default {
         "data-theme",
         localStorage.getItem("theme"),
       );
+    }
+    if (localStorage.getItem("locale")) {
+      setLocale(localStorage.getItem("locale"));
+    } else {
+      setLocale("en");
     }
   },
 };

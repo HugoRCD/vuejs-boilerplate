@@ -46,7 +46,7 @@
                 ]"
                 :aria-current="item.current ? 'page' : undefined"
               >
-                {{ item.name }}
+                {{ $t(item.name.toLowerCase()) }}
               </router-link>
             </div>
           </div>

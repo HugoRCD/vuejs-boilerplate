@@ -1,17 +1,20 @@
 {
-  "name": "vuejs-frontend-template",
-  "version": "0.1.0",
+  "name": "vuejs-boilerplate",
   "private": true,
+  "version": "0.1.0",
+  "description": "A Vue.js project",
+  "author": "Hugo Richard",
   "license": "MIT",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\"",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "format": "prettier --write \"src/**/*.js\" \"src/**/*.vue\" "
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.7",
     "@heroicons/vue": "^2.0.13",
+    "@intlify/unplugin-vue-i18n": "^0.8.1",
     "axios": "^1.2.1",
     "express": "^4.18.2",
     "serve-static": "^1.15.0",
@@ -26,9 +29,7 @@
     "@intlify/vue-i18n-loader": "^4.2.0",
     "@tailwindcss/forms": "^0.5.3",
     "@types/axios": "^0.14.0",
-    "@vue/cli-plugin-router": "~5.0.0",
-    "@vue/cli-plugin-vuex": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
+    "@vitejs/plugin-vue": "^4.0.0",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.29.0",
     "eslint-config-prettier": "^8.3.0",
@@ -39,6 +40,6 @@
     "sass": "^1.57.1",
     "sass-loader": "^13.2.0",
     "tailwindcss": "^3.2.4",
-    "vue-cli-plugin-i18n": "~2.3.1"
+    "vite": "^4.0.3"
   }
 }

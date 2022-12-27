@@ -9,8 +9,6 @@ import "./assets/style/main.scss";
 import axios from "./plugins/axios";
 import vue3GoogleLogin from "vue3-google-login";
 
-import clickOutside from "./plugins/directives.js";
-
 const options = {
   toast: true,
   position: "top-end",
@@ -26,8 +24,7 @@ app.use(router);
 app.use(i18n);
 app.use(VueSweetalert2, options);
 app.use(vue3GoogleLogin, {
-  clientId: process.env.VUE_APP_GOOGLE_CLIENT_ID,
+  clientId: import.meta.env.VITE_GOOGLE_CLIENT_ID,
 });
 app.config.globalProperties.$http = axios;
-app.directive("click-outside", clickOutside["click-outside"]);
 app.mount("#app");
